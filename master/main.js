@@ -3,12 +3,16 @@ let helperControl = require('index').lib.control
 module.exports.loop = function () {
   const spawnUnits = true
   if (spawnUnits) {
-    helperControl.spawnHarvester()
-    helperControl.spawnUpgrader()
     helperControl.spawnBuilder()
+    helperControl.spawnUpgrader()
+    helperControl.spawnHarvester()
   }
 
-  helperControl.clearDeadMemory()
+  if (!Game.spawns.S1.spawns) {
+    helperControl.assignRoles()
+    helperControl.clearDeadMemory()
+  }
+
 
   // helperTower.attackClosest(TOWERID)
   // helperTower.repairClosest(TOWERID)
