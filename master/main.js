@@ -3,6 +3,7 @@ let helperControl = require('index').lib.control
 module.exports.loop = function () {
   const spawnUnits = true
   if (spawnUnits) {
+  // lowest gets called first @beginning
     helperControl.spawnBuilder()
     helperControl.spawnUpgrader()
     helperControl.spawnHarvester()
