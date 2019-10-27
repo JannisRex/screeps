@@ -1,10 +1,10 @@
-let roleHarvester = require('../creeps/role.harvester')
+let roleHarvester = require('role.harvester')
 let harvesterCount = 0
 
-let roleBuilder = require('../creeps/role.builder')
+let roleBuilder = require('role.builder')
 let builderCount = 0
 
-let roleUpgrader = require('../creeps/role.upgrader')
+let roleUpgrader = require('role.upgrader')
 let upgraderCount = 0
 
 const spawnOne = Game.spawns.S1

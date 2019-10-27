@@ -1,16 +1,16 @@
 // BUILDINGS
 module.exports.buildings = {
-  tower: require('./buildings/defence.tower')
+  tower: require('defence.tower')
 }
 
 // CREEPS
 module.exports.creeps = {
-  builder: require('./creeps/role.builder'),
-  harvester: require('./creeps/role.harvester'),
-  upgrader: require('./creeps/role.upgrader')
+  builder: require('role.builder'),
+  harvester: require('role.harvester'),
+  upgrader: require('role.upgrader')
 }
 // LIB
 module.exports.lib = {
-  constants: require('./lib/helper.constants'),
-  control: require('./lib/helper.control')
+  constants: require('helper.constants'),
+  control: require('helper.control')
 }
