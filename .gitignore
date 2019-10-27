@@ -1,0 +1,16 @@
+node_modules/**/*
+node_modules-/**/*
+.expo/*
+npm-debug.*
+.DS_Store
+*.jks
+*.p12
+*.key
+*.mobileprovision
+
+# Android
+build/
+.idea
+.gradle
+local.properties
+*.iml
