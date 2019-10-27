@@ -1,4 +1,4 @@
-let helperControl = require('./index.js/control')
+let helperControl = require('index').lib
 
 module.exports.loop = function () {
   const spawnUnits = true

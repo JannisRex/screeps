@@ -1,4 +1,4 @@
-let Tower = {
+let tower = {
 
   /** @param {Tower} tower **/
   attackClosest: function (towerID) {
@@ -39,4 +39,4 @@ let Tower = {
   }
 }
 
-module.exports = Tower
+module.exports = tower
