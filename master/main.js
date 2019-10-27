@@ -1,5 +1,4 @@
-let helperTower = require('helper.tower')
-let helperControl = require('helper.control')
+let helperControl = require('./index.js/control')
 
 module.exports.loop = function () {
   const spawnUnits = true
