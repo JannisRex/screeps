@@ -9,6 +9,12 @@ let upgraderCount = 0
 
 const spawnOne = Game.spawns.S1
 
+/* COST
+    WORK = 100,
+    CARRY = 50,
+    MOVE = 50
+    */
+
 let helperControl = {
 
   /**  **/
@@ -23,8 +29,7 @@ let helperControl = {
       spawnOne.spawnCreep([WORK, CARRY, MOVE], newName,
         { memory: { role: 'harvester' } })
 
-      let creep = Game.creeps[newName]
-      if (creep) {
+      if (Game.creeps[newName]) {
         if (creep.memory.role === 'harvester') {
           roleHarvester.run(creep)
         }
