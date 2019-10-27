@@ -1,4 +1,4 @@
-let helperControl = require('index').lib
+let helperControl = require('index').lib.control
 
 module.exports.loop = function () {
   const spawnUnits = true
@@ -7,6 +7,8 @@ module.exports.loop = function () {
     helperControl.spawnUpgrader()
     helperControl.spawnBuilder()
   }
+
+  helperControl.clearDeadMemory()
 
   // helperTower.attackClosest(TOWERID)
   // helperTower.repairClosest(TOWERID)
