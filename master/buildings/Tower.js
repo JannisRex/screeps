@@ -1,9 +1,9 @@
-let helperTower = {
+let Tower = {
 
   /** @param {Tower} tower **/
   attackClosest: function (towerID) {
     const tower = Game.getObjectById(towerID)
-    
+
     if (tower) {
       let closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
         filter: (structure) => structure.hits < structure.hitsMax
@@ -22,7 +22,7 @@ let helperTower = {
   /** @param {Tower} tower **/
   repairClosest: function (towerID) {
     const tower = Game.getObjectById(towerID)
-     
+
     if (tower) {
       let closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
         filter: (structure) => structure.hits < structure.hitsMax
@@ -39,4 +39,4 @@ let helperTower = {
   }
 }
 
-module.exports = helperTower
+module.exports = Tower
