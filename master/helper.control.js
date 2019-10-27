@@ -9,11 +9,11 @@ let upgraderCount = 0
 
 const spawnOne = Game.spawns.S1
 
-/* COST
+/*  COST
     WORK = 100,
     CARRY = 50,
     MOVE = 50
-    */
+*/
 
 let helperControl = {
 
@@ -21,17 +21,24 @@ let helperControl = {
   spawnHarvester: function () {
     let harvesters = _.filter(Game.creeps, (creep) => creep.memory.role === 'harvester')
     let energyAvailable = spawnOne.store[RESOURCE_ENERGY]
+    let isSpawning = false
 
-    if (harvesters.length < 2 && energyAvailable > 200) {
+    if (harvesters.length < 2 && energyAvailable > 200 && !isSpawning) {
       harvesterCount = harvesterCount + 1
+      isSpawning = true
       let newName = 'Harvester' + harvesterCount
 
       spawnOne.spawnCreep([WORK, CARRY, MOVE], newName,
         { memory: { role: 'harvester' } })
 
-      if (Game.creeps[newName]) {
-        if (creep.memory.role === 'harvester') {
-          roleHarvester.run(creep)
+      let creep = null
+      while (isSpawning) {
+        creep = Game.creeps[newName]
+        if (creep) {
+          if (creep.memory.role === 'harvester') {
+            roleHarvester.run(creep)
+            isSpawning = false
+          }
         }
       }
     }
@@ -41,9 +48,11 @@ let helperControl = {
   spawnBuilder: function () {
     let builders = _.filter(Game.creeps, (creep) => creep.memory.role === 'builder')
     let energyAvailable = spawnOne.store[RESOURCE_ENERGY]
+    let isSpawning = false
 
-    if (builders.length < 1 && energyAvailable > 200) {
+    if (builders.length < 1 && energyAvailable > 200 && !isSpawning) {
       builderCount = builderCount + 1
+      isSpawning = true
       let newName = 'Builder' + builderCount
 
       spawnOne.spawnCreep([WORK, CARRY, MOVE], newName,
@@ -53,6 +62,7 @@ let helperControl = {
       if (creep) {
         if (creep.memory.role === 'builder') {
           roleBuilder.run(creep)
+          isSpawning = false
         }
       }
     }
@@ -62,9 +72,11 @@ let helperControl = {
   spawnUpgrader: function () {
     let upgraders = _.filter(Game.creeps, (creep) => creep.memory.role === 'upgrader')
     let energyAvailable = spawnOne.store[RESOURCE_ENERGY]
+    let isSpawning = false
 
-    if (upgraders.length < 1 && energyAvailable > 200) {
+    if (upgraders.length < 1 && energyAvailable > 200 && !isSpawning) {
       upgraderCount = upgraderCount + 1
+      isSpawning = true
       let newName = 'Harvester' + upgraderCount
 
       spawnOne.spawnCreep([WORK, CARRY, MOVE], newName,
@@ -74,6 +86,7 @@ let helperControl = {
       if (creep) {
         if (creep.memory.role === 'upgrader') {
           roleUpgrader.run(creep)
+          isSpawning = false
         }
       }
     }
