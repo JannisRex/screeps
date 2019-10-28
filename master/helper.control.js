@@ -1,10 +1,10 @@
+let constants = require('helper.constants')
 let roleHarvester = require('role.harvester')
-
 let roleBuilder = require('role.builder')
-
 let roleUpgrader = require('role.upgrader')
 
 let isSpawning = false
+const maxCreepParts = constants.maxCreepParts
 const spawnOne = Game.spawns.S1
 
 /*  COST
@@ -14,18 +14,31 @@ const spawnOne = Game.spawns.S1
 */
 
 let helperControl = {
-
   /**  **/
   spawnHarvester: function () {
     let energyAvailable = spawnOne.room.energyCapacityAvailable
     let harvesters = _.filter(Game.creeps, (creep) => creep.memory.role === 'harvester')
+    let availableParts = maxCreepParts
     let creepParts = []
 
-    if (harvesters.length < 2 && energyAvailable > 200 && !isSpawning) {
+    if (harvesters.length < 2 && !isSpawning) {
       isSpawning = true
       let newName = 'Harvester' + Game.time
 
-      spawnOne.spawnCreep([WORK, CARRY, MOVE], newName,
+      // if theres still 'room' to make 2xWork + 1xCarry + 1xMove
+      // and enough energy in storage
+      while (availableParts >= 4 && energyAvailable >= 300) {
+        // pushing parts to array, which will be used to spawn creep
+        creepParts.push(WORK)
+        creepParts.push(WORK)
+        creepParts.push(CARRY)
+        creepParts.push(MOVE)
+
+        availableParts = availableParts - 4
+        energyAvailable = energyAvailable - 300
+      }
+
+      spawnOne.spawnCreep(creepParts, newName,
         { memory: { role: 'harvester' } })
     }
 
