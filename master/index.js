@@ -6,7 +6,7 @@ module.exports.buildings = {
 // CREEPS
 module.exports.creeps = {
   builder: require('role.builder'),
-  harvester: require('role.harvester'),
+  miner: require('role.miner'),
   upgrader: require('role.upgrader')
 }
 // LIB
