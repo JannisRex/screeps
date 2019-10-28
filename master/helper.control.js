@@ -47,14 +47,29 @@ let helperControl = {
 
   /**  **/
   spawnBuilder: function () {
-    let energyAvailable = spawnOne.room.energyCapacityAvailable
     let builders = _.filter(Game.creeps, (creep) => creep.memory.role === 'builder')
 
-    if (builders.length < 1 && energyAvailable > 200 && !isSpawning) {
-      isSpawning = true
+    if (builders.length < 1 && !isSpawning) {
       let newName = 'Builder' + Game.time
+      let energyAvailable = spawnOne.room.energyCapacityAvailable
+      let availableParts = maxCreepParts
+      let creepParts = []
+      isSpawning = true
 
-      spawnOne.spawnCreep([WORK, CARRY, MOVE], newName,
+      // if theres still 'room' to make 2xWork + 1xCarry + 1xMove
+      // and enough energy in storage
+      while (availableParts >= 4 && energyAvailable >= 300) {
+        // pushing parts to array, which will be used to spawn creep
+        creepParts.push(WORK)
+        creepParts.push(WORK)
+        creepParts.push(CARRY)
+        creepParts.push(MOVE)
+
+        availableParts = availableParts - 4
+        energyAvailable = energyAvailable - 300
+      }
+
+      spawnOne.spawnCreep(creepParts, newName,
         { memory: { role: 'builder' } })
     }
 
@@ -63,14 +78,29 @@ let helperControl = {
 
   /**  **/
   spawnUpgrader: function () {
-    let energyAvailable = spawnOne.room.energyCapacityAvailable
     let upgraders = _.filter(Game.creeps, (creep) => creep.memory.role === 'upgrader')
 
-    if (upgraders.length < 1 && energyAvailable > 200 && !isSpawning) {
-      isSpawning = true
+    if (upgraders.length < 1 && !isSpawning) {
       let newName = 'Upgrader' + Game.time
+      let energyAvailable = spawnOne.room.energyCapacityAvailable
+      let availableParts = maxCreepParts
+      let creepParts = []
+      isSpawning = true
 
-      spawnOne.spawnCreep([WORK, CARRY, MOVE], newName,
+      // if theres still 'room' to make 2xWork + 1xCarry + 1xMove
+      // and enough energy in storage
+      while (availableParts >= 4 && energyAvailable >= 300) {
+        // pushing parts to array, which will be used to spawn creep
+        creepParts.push(WORK) // 100
+        creepParts.push(WORK) // 100
+        creepParts.push(CARRY) // 50
+        creepParts.push(MOVE) // 50
+
+        availableParts = availableParts - 4
+        energyAvailable = energyAvailable - 300
+      }
+
+      spawnOne.spawnCreep(creepParts, newName,
         { memory: { role: 'upgrader' } })
     }
 
