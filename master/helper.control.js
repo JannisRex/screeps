@@ -1,5 +1,5 @@
 let constants = require('helper.constants')
-let roleHarvester = require('role.harvester')
+let roleMiner = require('role.miner')
 let roleBuilder = require('role.builder')
 let roleUpgrader = require('role.upgrader')
 
@@ -15,11 +15,11 @@ const spawnOne = Game.spawns.S1
 
 let helperControl = {
   /**  **/
-  spawnHarvester: function () {
-    let harvesters = _.filter(Game.creeps, (creep) => creep.memory.role === 'harvester')
+  spawnMiner: function () {
+    let miners = _.filter(Game.creeps, (creep) => creep.memory.role === 'miner')
 
-    if (harvesters.length < 2 && !isSpawning) {
-      let newName = 'Harvester' + Game.time
+    if (miners.length < 2 && !isSpawning) {
+      let newName = 'Miner' + Game.time
       let energyAvailable = spawnOne.room.energyCapacityAvailable
       let availableParts = maxCreepParts
       let creepParts = []
@@ -39,7 +39,7 @@ let helperControl = {
       }
 
       spawnOne.spawnCreep(creepParts, newName,
-        { memory: { role: 'harvester' } })
+        { memory: { role: 'miner' } })
     }
 
     helperControl.checkIfSpawning()
