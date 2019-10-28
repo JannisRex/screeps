@@ -16,14 +16,14 @@ const spawnOne = Game.spawns.S1
 let helperControl = {
   /**  **/
   spawnHarvester: function () {
-    let energyAvailable = spawnOne.room.energyCapacityAvailable
     let harvesters = _.filter(Game.creeps, (creep) => creep.memory.role === 'harvester')
-    let availableParts = maxCreepParts
-    let creepParts = []
 
     if (harvesters.length < 2 && !isSpawning) {
-      isSpawning = true
       let newName = 'Harvester' + Game.time
+      let energyAvailable = spawnOne.room.energyCapacityAvailable
+      let availableParts = maxCreepParts
+      let creepParts = []
+      isSpawning = true
 
       // if theres still 'room' to make 2xWork + 1xCarry + 1xMove
       // and enough energy in storage
