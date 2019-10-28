@@ -10,5 +10,6 @@ let helperConstants = {
 }
 
 module.exports = {
-  energyAvailable: helperConstants.getEnergyAvailable()
+  energyAvailable: helperConstants.getEnergyAvailable(),
+  maxCreepParts: 13 // upper border for dynamic sizing
 }
