@@ -6,7 +6,7 @@ module.exports.loop = function () {
   // lowest gets called first @beginning
     helperControl.spawnBuilder()
     helperControl.spawnUpgrader()
-    helperControl.spawnHarvester()
+    helperControl.spawnMiner()
   }
 
   if (!Game.spawns.S1.spawns) {

@@ -127,7 +127,7 @@ let helperControl = {
         let creep = Game.creeps[name] ? Game.creeps[name] : null
         if (creep) {
           if (creep.memory.role === 'harvester') {
-            roleHarvester.run(creep)
+            roleMiner.run(creep)
           }
           if (creep.memory.role === 'upgrader') {
             roleUpgrader.run(creep)
