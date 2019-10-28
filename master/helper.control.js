@@ -17,8 +17,9 @@ let helperControl = {
 
   /**  **/
   spawnHarvester: function () {
+    let energyAvailable = spawnOne.room.energyCapacityAvailable
     let harvesters = _.filter(Game.creeps, (creep) => creep.memory.role === 'harvester')
-    let energyAvailable = spawnOne.store[RESOURCE_ENERGY]
+    let creepParts = []
 
     if (harvesters.length < 2 && energyAvailable > 200 && !isSpawning) {
       isSpawning = true
@@ -33,8 +34,8 @@ let helperControl = {
 
   /**  **/
   spawnBuilder: function () {
+    let energyAvailable = spawnOne.room.energyCapacityAvailable
     let builders = _.filter(Game.creeps, (creep) => creep.memory.role === 'builder')
-    let energyAvailable = spawnOne.store[RESOURCE_ENERGY]
 
     if (builders.length < 1 && energyAvailable > 200 && !isSpawning) {
       isSpawning = true
@@ -49,8 +50,8 @@ let helperControl = {
 
   /**  **/
   spawnUpgrader: function () {
+    let energyAvailable = spawnOne.room.energyCapacityAvailable
     let upgraders = _.filter(Game.creeps, (creep) => creep.memory.role === 'upgrader')
-    let energyAvailable = spawnOne.store[RESOURCE_ENERGY]
 
     if (upgraders.length < 1 && energyAvailable > 200 && !isSpawning) {
       isSpawning = true
