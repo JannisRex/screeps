@@ -32,7 +32,7 @@ let roleBuilder = {
         }
       })
       if (creep.withdraw(energyStorage[0], RESOURCE_ENERGY, maxCapacity) === ERR_NOT_IN_RANGE) {
-        creep.moveTo(sources[0], {
+        creep.moveTo(energyStorage[0], {
           visualizePathStyle: {
             stroke: '#ffffff'
           }
