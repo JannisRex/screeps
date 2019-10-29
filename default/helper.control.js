@@ -112,7 +112,7 @@ let helperControl = {
     if (spawnOne.spawning) {
       let spawningCreep = Game.creeps[spawnOne.spawning.name]
 
-      if (spawningCreep.memory) {
+      if (spawningCreep) {
       // gets Emote according to creepRole
         let roleEmote = '👀👀👀'
         if (spawningCreep.memory.role === 'miner') {
@@ -132,9 +132,9 @@ let helperControl = {
           spawnOne.pos.x + 1,
           spawnOne.pos.y,
           { align: 'left', opacity: 0.8 })
-      } else {
-        isSpawning = false
       }
+    } else {
+      isSpawning = false
     }
   },
 
