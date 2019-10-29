@@ -3,7 +3,6 @@ let roleMiner = require('role.miner')
 let roleBuilder = require('role.builder')
 let roleUpgrader = require('role.upgrader')
 
-let isSpawning = false
 const maxCreepParts = constants.maxCreepParts
 const spawnOne = Game.spawns.S1
 
@@ -18,12 +17,11 @@ let helperControl = {
   spawnMiner: function () {
     let miners = _.filter(Game.creeps, (creep) => creep.memory.role === 'miner')
 
-    if (miners.length < 2 && !isSpawning) {
+    if (miners.length < 2) {
       let newName = 'Miner' + Game.time
       let energyAvailable = spawnOne.room.energyCapacityAvailable
       let availableParts = maxCreepParts
       let creepParts = []
-      isSpawning = true
 
       // if theres still 'room' to make 2xWork + 1xCarry + 1xMove
       // and enough energy in storage
@@ -49,12 +47,11 @@ let helperControl = {
   spawnBuilder: function () {
     let builders = _.filter(Game.creeps, (creep) => creep.memory.role === 'builder')
 
-    if (builders.length < 2 && !isSpawning) {
+    if (builders.length < 2) {
       let newName = 'Builder' + Game.time
       let energyAvailable = spawnOne.room.energyCapacityAvailable
       let availableParts = maxCreepParts
       let creepParts = []
-      isSpawning = true
 
       // if theres still 'room' to make 2xWork + 1xCarry + 1xMove
       // and enough energy in storage
@@ -80,12 +77,11 @@ let helperControl = {
   spawnUpgrader: function () {
     let upgraders = _.filter(Game.creeps, (creep) => creep.memory.role === 'upgrader')
 
-    if (upgraders.length < 1 && !isSpawning) {
+    if (upgraders.length < 1) {
       let newName = 'Upgrader' + Game.time
       let energyAvailable = spawnOne.room.energyCapacityAvailable
       let availableParts = maxCreepParts
       let creepParts = []
-      isSpawning = true
 
       // if theres still 'room' to make 2xWork + 1xCarry + 1xMove
       // and enough energy in storage
