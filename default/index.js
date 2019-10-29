@@ -12,5 +12,6 @@ module.exports.creeps = {
 // LIB
 module.exports.lib = {
   constants: require('helper.constants'),
-  control: require('helper.control')
+  control: require('helper.control'),
+  safemode: require('helper.safemode')
 }
