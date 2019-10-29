@@ -111,13 +111,30 @@ let helperControl = {
   checkIfSpawning: function () {
     if (spawnOne.spawning) {
       let spawningCreep = Game.creeps[spawnOne.spawning.name]
-      spawnOne.room.visual.text(
-        '🛠️' + spawningCreep.memory.role,
-        spawnOne.pos.x + 1,
-        spawnOne.pos.y,
-        { align: 'left', opacity: 0.8 })
-    } else {
-      isSpawning = false
+
+      if (spawningCreep.memory) {
+      // gets Emote according to creepRole
+        let roleEmote = '👀👀👀'
+        if (spawningCreep.memory.role === 'miner') {
+          roleEmote = '⛏'
+        }
+
+        if (spawningCreep.memory.role === 'builder') {
+          roleEmote = '🛠'
+        }
+
+        if (spawningCreep.memory.role === 'upgrader') {
+          roleEmote = '⚙'
+        }
+
+        spawnOne.room.visual.text(
+          roleEmote + spawningCreep.memory.role,
+          spawnOne.pos.x + 1,
+          spawnOne.pos.y,
+          { align: 'left', opacity: 0.8 })
+      } else {
+        isSpawning = false
+      }
     }
   },
 
@@ -126,7 +143,7 @@ let helperControl = {
       if (name && typeof name === 'string') {
         let creep = Game.creeps[name] ? Game.creeps[name] : null
         if (creep) {
-          if (creep.memory.role === 'harvester') {
+          if (creep.memory.role === 'miner') {
             roleMiner.run(creep)
           }
           if (creep.memory.role === 'upgrader') {
