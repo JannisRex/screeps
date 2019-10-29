@@ -47,7 +47,7 @@ let helperControl = {
   spawnBuilder: function () {
     let builders = _.filter(Game.creeps, (creep) => creep.memory.role === 'builder')
 
-    if (builders.length < 2) {
+    if (builders.length < 1) {
       let newName = 'Builder' + Game.time
       let energyAvailable = spawnOne.room.energyCapacityAvailable
       let availableParts = maxCreepParts
@@ -88,7 +88,8 @@ let helperControl = {
       while (availableParts >= 4 && energyAvailable >= 300) {
         // pushing parts to array, which will be used to spawn creep
         creepParts.push(WORK) // 100
-        creepParts.push(WORK) // 100
+        creepParts.push(CARRY) // 50
+        creepParts.push(CARRY) // 50
         creepParts.push(CARRY) // 50
         creepParts.push(MOVE) // 50
 
