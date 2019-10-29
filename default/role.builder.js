@@ -31,14 +31,28 @@ let roleBuilder = {
                             structure.store[RESOURCE_ENERGY] >= 45
         }
       })
-      if (creep.withdraw(energyStorage[0], RESOURCE_ENERGY, maxCapacity) === ERR_NOT_IN_RANGE) {
-        creep.moveTo(energyStorage[0], {
-          visualizePathStyle: {
-            stroke: '#ffffff'
-          }
-        })
+      let minersAlive = _.filter(Game.creeps, (creep) => creep.memory.role === 'miner')
+
+      // gather energy from clostest storage if
+      // there is any miner (to not get Energy to 0)
+      if (minersAlive.length > 0) {
+        if (creep.withdraw(energyStorage[0], RESOURCE_ENERGY, maxCapacity) === ERR_NOT_IN_RANGE) {
+          creep.moveTo(energyStorage[0], {
+            visualizePathStyle: {
+              stroke: '#ffffff'
+            }
+          })
+        }
+      } else {
+        let sources = creep.room.find(FIND_SOURCES)
+        if (creep.harvest(sources[0]) === ERR_NOT_IN_RANGE) {
+          creep.moveTo(sources[0], {
+            visualizePathStyle: {
+              stroke: '#ffffff'
+            }
+          })
+        }
       }
-    }
   }
 }
 
