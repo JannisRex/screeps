@@ -1,17 +1,26 @@
-let helperControl = require('index').lib.control
+let libControl = require('index').lib.control
+let libSafemode = require('index').lib.safemode
 
 module.exports.loop = function () {
   const spawnUnits = true
   if (spawnUnits) {
   // lowest gets called first @beginning
-    helperControl.spawnBuilder()
-    helperControl.spawnUpgrader()
-    helperControl.spawnMiner()
+    libControl.spawnBuilder()
+    libControl.spawnUpgrader()
+    libControl.spawnMiner()
   }
 
+  // while not spawning, to prevent undefined
+  // or ref errors
   if (!Game.spawns.S1.spawns) {
-    helperControl.assignRoles()
-    helperControl.clearDeadMemory()
+    libControl.assignRoles()
+    libControl.clearDeadMemory()
+  }
+
+  // Eventhandler
+  const autoSafeMode = true
+  if (autoSafeMode) {
+    libSafemode.hostileCheck()
   }
 
 
