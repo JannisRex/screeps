@@ -53,6 +53,7 @@ let roleBuilder = {
           })
         }
       }
+    }
   }
 }
 
