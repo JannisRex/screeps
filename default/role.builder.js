@@ -23,8 +23,15 @@ let roleBuilder = {
         }
       }
     } else {
-      let sources = creep.room.find(FIND_SOURCES)
-      if (creep.harvest(sources[0]) === ERR_NOT_IN_RANGE) {
+      let maxCapacity = creep.store.getCapacity()
+      let energyStorage = creep.room.find(FIND_STRUCTURES, {
+        filter: (structure) => {
+          return (structure.structureType === STRUCTURE_EXTENSION ||
+                            structure.structureType === STRUCTURE_SPAWN) &&
+                            structure.store[RESOURCE_ENERGY] >= 45
+        }
+      })
+      if (creep.withdraw(energyStorage[0], RESOURCE_ENERGY, maxCapacity) === ERR_NOT_IN_RANGE) {
         creep.moveTo(sources[0], {
           visualizePathStyle: {
             stroke: '#ffffff'
