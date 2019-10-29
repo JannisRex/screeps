@@ -18,7 +18,7 @@ module.exports.loop = function () {
   }
 
   // Eventhandler
-  const autoSafeMode = true
+  const autoSafeMode = false
   if (autoSafeMode) {
     libSafemode.hostileCheck()
   }
