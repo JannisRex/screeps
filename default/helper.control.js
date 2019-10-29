@@ -18,7 +18,7 @@ let helperControl = {
   spawnMiner: function () {
     let miners = _.filter(Game.creeps, (creep) => creep.memory.role === 'miner')
 
-    if (miners.length < 2 && !isSpawning) {
+    if (miners.length < 3 && !isSpawning) {
       let newName = 'Miner' + Game.time
       let energyAvailable = spawnOne.room.energyCapacityAvailable
       let availableParts = maxCreepParts
