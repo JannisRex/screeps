@@ -1,8 +1,10 @@
 let libControl = require('index').lib.control
 let libSafemode = require('index').lib.safemode
 
+const spawnUnits = true
+const autoSafeMode = false
+
 module.exports.loop = function () {
-  const spawnUnits = true
   if (spawnUnits) {
   // lowest gets called first @beginning
     libControl.spawnBuilder()
@@ -18,7 +20,6 @@ module.exports.loop = function () {
   }
 
   // Eventhandler
-  const autoSafeMode = false
   if (autoSafeMode) {
     libSafemode.hostileCheck()
   }
