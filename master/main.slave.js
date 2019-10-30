@@ -5,7 +5,7 @@ let doCharge = require('task.charge')
 let doBuild = require('task.build')
 let doRepair = require('task.repair')
 
-let constants = require('index').lib.constants
+let constants = require('lib.constants')
 const maxCreepParts = constants.maxCreepParts
 
 // FIXME: is new too expensive?
