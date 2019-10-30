@@ -1,4 +1,4 @@
-module.exports = {
+module.exports.slave = {
   slave: require('main.slave')
 }
 module.exports.lib = {
