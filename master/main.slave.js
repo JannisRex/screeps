@@ -5,6 +5,9 @@ let doCharge = require('task.charge')
 let doBuild = require('task.build')
 let doRepair = require('task.repair')
 
+let constants = require('index').lib.constants
+const maxCreepParts = constants.maxCreepParts
+
 // FIXME: is new too expensive?
 /* new Slave(creep)
  *
@@ -37,7 +40,7 @@ Slave.prototype.mode = function () {
 */
 Slave.spawn = function (spawn, role, name) {
   let availableEnergy = Game.spawns.S1.room.energyCapacityAvailable
-  let availableParts = 13
+  let availableParts = maxCreepParts
   let creepParts = []
 
   // if theres still 'room' to make 2xWork + 1xCarry + 1xMove
