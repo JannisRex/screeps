@@ -1,5 +1,6 @@
 let config = require('index').lib.config
 let task = require('index').slave
+let towerControl = require('index').buildings.tower
 
 function cleanupDeadCreeps() {
   for (let name in Memory.creeps) {
@@ -15,6 +16,8 @@ module.exports.loop = function () {
   let spawn = Game.spawns.S1
   spawn.memory.slaves = spawn.memory.slaves || {}
   cleanupDeadCreeps()
+  // towerControl.attackClosest($ID)
+  // towerControl.repairClosest($ID)
 
   for (let type of config.spawnPriority) {
     if (spawn.spawning) {
@@ -22,17 +25,16 @@ module.exports.loop = function () {
     }
 
     let count = config.targetCounts[type]
-    // console.log("Need " + count + " of " + type);
     {
       let creeps = _.filter(Game.creeps, (creep) => creep.memory.role === type)
-      // console.log("Have " + creeps.length);
       if (creeps.length < count) {
         if (task.slave.spawn(spawn, type) === OK) {
+          // doesnt get called idk, if I dont
+          // check it gets called indefinetely
           console.log('spawning ' + type)
         }
-
-        // In all cases we should stop trying to spawn another thing
-        // this tick.
+        // In all cases we should stop trying to spawn
+        // another thing this tick.
         break
       }
     }
@@ -41,7 +43,6 @@ module.exports.loop = function () {
   for (let name in Game.creeps) {
     if (Game.creeps[name]) {
       let creep = Game.creeps[name]
-
       new task[creep.memory.job](creep).tick()
     }
   }
