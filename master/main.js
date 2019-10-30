@@ -38,11 +38,11 @@ module.exports.loop = function () {
     }
   }
 
-  for (let n in Game.creeps) {
-    if (Game.creeps[n]) {
-      let c = Game.creeps[n]
+  for (let name in Game.creeps) {
+    if (Game.creeps[name]) {
+      let creep = Game.creeps[name]
 
-      new task[c.memory.job](c).tick()
+      new task[creep.memory.job](creep).tick()
     }
   }
 }
