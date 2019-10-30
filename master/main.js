@@ -29,9 +29,6 @@ module.exports.loop = function () {
       if (creeps.length < count) {
         console.log('spawning ' + type)
         let workOrder = task.slave.spawn(spawn, type)
-        if (Number.isInteger(workOrder)) {
-          console.log(workOrder)
-        }
 
         // In all cases we should stop trying to spawn another thing
         // this tick.
