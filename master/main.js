@@ -1,4 +1,4 @@
-let config = require('config')
+let config = require('index').lib.config
 let task = require('index')
 
 function cleanupDeadCreeps() {
