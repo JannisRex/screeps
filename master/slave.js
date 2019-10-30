@@ -15,10 +15,11 @@ let Slave = function (creep) {
   this.creep = creep
 }
 
-/* TODO base class */
+// returns the role of the creep
 Slave.prototype.role = function () {
   return this.creep.memory.role
 }
+// returns the mode of the creep, defaults to 'mine'
 Slave.prototype.mode = function () {
   return this.creep.memory.mode || 'mine'
 }
