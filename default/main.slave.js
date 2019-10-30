@@ -39,7 +39,7 @@ Slave.prototype.mode = function () {
     MOVE = 50
 */
 Slave.spawn = function (spawn, role, name) {
-  let availableEnergy = Game.spawns.S1.room.energyCapacityAvailable
+  let availableEnergy = Game.spawns.S1.room.energyAvailable
   let availableParts = maxCreepParts
   let creepParts = []
 
