@@ -1,4 +1,4 @@
-let helperConstants = {
+let constants = {
 
   getEnergyAvailable: function () {
     let energyAvailable = 0
@@ -10,6 +10,6 @@ let helperConstants = {
 }
 
 module.exports = {
-  energyAvailable: helperConstants.getEnergyAvailable(),
+  energyAvailable: constants.getEnergyAvailable(),
   maxCreepParts: 13 // upper border for dynamic sizing
 }

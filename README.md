@@ -1,0 +1,13 @@
+# SCREEPS SCRIPT
+---
+### TODO
+  
+  * Change Work/Delivery/Spawn routine => Split Work to different Creeps
+  
+  * Get some sort of Pathing
+  
+  * Deal with multiple Spawns
+  
+  * Check efficency, maybe reduce cost somehow (new Slave() to expensive???)
+
+---

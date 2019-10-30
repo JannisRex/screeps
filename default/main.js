@@ -1,30 +1,48 @@
-let libControl = require('index').lib.control
-let libSafemode = require('index').lib.safemode
+let config = require('index').lib.config
+let task = require('index')
 
-const spawnUnits = true
-const autoSafeMode = false
+function cleanupDeadCreeps() {
+  for (let name in Memory.creeps) {
+    if (!Game.creeps[name]) {
+      console.log('Clearing non-existing creep memory: ', name)
+      delete Memory.creeps[name]
+    }
+  }
+}
 
 module.exports.loop = function () {
-  if (spawnUnits) {
-  // lowest gets called first @beginning
-    libControl.spawnBuilder()
-    libControl.spawnUpgrader()
-    libControl.spawnMiner()
+  // TODO: deal with multiple spawns
+  let spawn = Game.spawns.S1
+  spawn.memory.slaves = spawn.memory.slaves || {}
+  cleanupDeadCreeps()
+
+  for (let type of config.spawnPriority) {
+    if (spawn.spawning) {
+      break
+    }
+
+    let count = config.targetCounts[type]
+    // console.log("Need " + count + " of " + type);
+    {
+      let creeps = _.filter(Game.creeps, (creep) => creep.memory.role === type)
+      // console.log("Have " + creeps.length);
+      if (creeps.length < count) {
+        if (task.slave.spawn(spawn, type) === OK) {
+          console.log('spawning ' + type)
+        }
+
+        // In all cases we should stop trying to spawn another thing
+        // this tick.
+        break
+      }
+    }
   }
 
-  // while not spawning, to prevent undefined
-  // or ref errors
-  if (!Game.spawns.S1.spawns) {
-    libControl.assignRoles()
-    libControl.clearDeadMemory()
+  for (let name in Game.creeps) {
+    if (Game.creeps[name]) {
+      let creep = Game.creeps[name]
+
+      new task[creep.memory.job](creep).tick()
+    }
   }
-
-  // Eventhandler
-  if (autoSafeMode) {
-    libSafemode.hostileCheck()
-  }
-
-
-  // helperTower.attackClosest(TOWERID)
-  // helperTower.repairClosest(TOWERID)
 }
