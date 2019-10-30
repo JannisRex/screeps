@@ -27,8 +27,9 @@ module.exports.loop = function () {
       let creeps = _.filter(Game.creeps, (creep) => creep.memory.role === type)
       // console.log("Have " + creeps.length);
       if (creeps.length < count) {
-        console.log('spawning ' + type)
-        let workOrder = task.slave.spawn(spawn, type)
+        if (task.slave.spawn(spawn, type) === OK) {
+          console.log('spawning ' + type)
+        }
 
         // In all cases we should stop trying to spawn another thing
         // this tick.

@@ -35,7 +35,7 @@ module.exports = function (creep, opts) {
       console.log(creep.name + ' Mine error: ' + e)
     }
   } else if (creep.carry.energy === creep.carryCapacity) {
-    creep.say('full')
+    creep.say('✖ full ✖')
     creep.memory.mode = 'work'
     return 1
   }
