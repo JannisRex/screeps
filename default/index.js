@@ -6,3 +6,6 @@ module.exports.lib = {
   constants: require('lib.constants'),
   safemode: require('lib.safemode')
 }
+module.exports.buildings = {
+  tower: require('building.tower')
+}
