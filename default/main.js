@@ -1,5 +1,5 @@
 let config = require('index').lib.config
-let task = require('index')
+let task = require('index').slave
 
 function cleanupDeadCreeps() {
   for (let name in Memory.creeps) {
