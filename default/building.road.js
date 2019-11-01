@@ -29,7 +29,12 @@ let road = {
   * Sources in the room.
   */
   buildToSources: function () {
-
+    let sources = spawn.room.find(FIND_SOURCES)
+    for (let i in sources) {
+      if (sources[i]) {
+        this.buildRoads(spawn.pos, sources[i].pos)
+      }
+    }
   }
 
 }
