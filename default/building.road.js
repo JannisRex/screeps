@@ -1,4 +1,5 @@
 const spawn = Game.spawns.S1
+const terrain = new Room.Terrain(spawn.room.name)
 
 let road = {
 
@@ -13,11 +14,13 @@ let road = {
 
     let shortestPath = spawn.room.findPath(from, to, opts)
     for (let i in shortestPath) {
-      if (shortestPath[i]) {
-        let result = spawn.room.createConstructionSite(shortestPath[i].x, shortestPath[i].y, Game.STRUCTURE_ROAD)
+    // console.log(i + ': ' + JSON.stringify(shortestPath[i]))
+      // if the terrain at pos.x && pos.y is not wall
+      if (terrain.get(shortestPath[i].x, shortestPath[i].y) !== 1) {
+        let result = spawn.room.createConstructionSite(shortestPath[i].x, shortestPath[i].y, STRUCTURE_ROAD)
 
         if (result !== OK) {
-          console.log('ROAD BUILD ERROR: ', result)
+          // console.log('ROAD BUILD ERROR: ', result)
         }
       }
     }
