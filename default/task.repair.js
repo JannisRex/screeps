@@ -28,6 +28,8 @@ module.exports = function (creep) {
     }
 
     return workOrder
+  } else {
+    return 2
   }
 
   return 0
