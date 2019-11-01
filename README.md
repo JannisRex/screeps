@@ -11,3 +11,7 @@
   * Check efficency, maybe reduce cost somehow (new Slave() to expensive???)
 
 ---
+
+## yeet
+
+  * Maximum call stack size exceeded (w.o. stack trace)
