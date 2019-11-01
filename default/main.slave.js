@@ -87,8 +87,18 @@ Slave.spawn = function (spawn, role, name) {
  * Some tasks may return other values.
  */
 Slave.prototype.tick = function () {
+  // f is the function to call depending on
+  // the current mode of the creep e.g. it
+  // is in work mode then f will be =
+  // this.{charger | upgrader | builder | [...]}
+  // and call either doCharger() or any other
+  //
+  // if we are in mine or withdrawEnergy - mode,
+  // f will be either this.mine or
+  // this.withdrawEnergy()
   let f = this[this.mode()]
 
+  // now we just invoke the desired functions
   if (f) {
     f.apply(this, arguments)
   } else {
