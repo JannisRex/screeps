@@ -12,12 +12,12 @@ function cleanupDeadCreeps() {
   }
 }
 
+const spawn = Game.spawns.S1
 module.exports.loop = function () {
   // TODO: deal with multiple spawns
-  let spawn = Game.spawns.S1
   spawn.memory.slaves = spawn.memory.slaves || {}
   cleanupDeadCreeps()
-  //roadControl.()
+  // roadControl.()
   // towerControl.attackClosest($ID)
   // towerControl.repairClosest($ID)
 
