@@ -5,11 +5,10 @@ let doUpgrade = require('task.upgrade')
 let doCharge = require('task.charge')
 let doBuild = require('task.build')
 let doRepair = require('task.repair')
-
 let constants = require('lib.constants')
+
 const maxCreepParts = constants.maxCreepParts
 
-// FIXME: is new too expensive?
 /* new Slave(creep)
  *
  * Creates a Slave object out of a creep. The creep must be able to at least do
@@ -182,4 +181,5 @@ Slave.prototype.mine = function () {
 Slave.prototype.withdrawEnergy = function () {
   doWithdrawEnergy(this.creep)
 }
+
 module.exports = Slave
