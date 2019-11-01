@@ -11,7 +11,7 @@
 
 module.exports = function (creep, opts) {
   opts = opts || {}
-  let maxCapacity = creep.store.getCapacity()
+  // let maxCapacity = creep.store.getCapacity()
   let targets = creep.memory.preferredStructures
 
   if (!targets) {
