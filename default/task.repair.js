@@ -19,9 +19,8 @@ module.exports = function (creep) {
     let workOrder = creep.repair(targets[0])
     if (workOrder === ERR_NOT_IN_RANGE) {
       creep.moveTo(targets[0])
-      return 0
     } else if (workOrder === ERR_NOT_ENOUGH_RESOURCES) {
-      creep.mode = 'mine'
+      creep.mode = 'withdrawEnergy'
       return 1
     } else if (workOrder !== OK) {
       console.log('Repair error: ' + workOrder)
@@ -31,5 +30,5 @@ module.exports = function (creep) {
     return workOrder
   }
 
-  return null
+  return 0
 }
