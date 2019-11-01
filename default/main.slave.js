@@ -1,5 +1,6 @@
 let doSpawn = require('task.spawn')
 let doMine = require('task.mine')
+let doWithdrawEnergy = require('task.withdrawEnergy')
 let doUpgrade = require('task.upgrade')
 let doCharge = require('task.charge')
 let doBuild = require('task.build')
@@ -138,6 +139,9 @@ Slave.prototype.work = function () {
     case 'mine':
       this.creep.say('⛏ MINING')
       break
+    case 'withdrawEnergy':
+      this.creep.say('💰 GET')
+      break
     case 'work':
       this.creep.say('✌ WORK')
       break
@@ -175,4 +179,7 @@ Slave.prototype.mine = function () {
   doMine(this.creep)
 }
 
+Slave.prototype.withdrawEnergy = function () {
+  doWithdrawEnergy(this.creep)
+}
 module.exports = Slave
