@@ -1,6 +1,7 @@
 let config = require('index').lib.config
 let task = require('index').slave
 let towerControl = require('index').buildings.tower
+let roadControl = require('index').buildings.road
 
 function cleanupDeadCreeps() {
   for (let name in Memory.creeps) {
@@ -16,6 +17,7 @@ module.exports.loop = function () {
   let spawn = Game.spawns.S1
   spawn.memory.slaves = spawn.memory.slaves || {}
   cleanupDeadCreeps()
+  //roadControl.()
   // towerControl.attackClosest($ID)
   // towerControl.repairClosest($ID)
 
