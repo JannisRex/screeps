@@ -161,14 +161,6 @@ Slave.prototype.work = function () {
         response = doUpgrade(this.creep)
       }
     }
-
-    if (response === 2) {
-      response = doCharge(this.creep)
-    }
-
-    if (response === 2) {
-      doUpgrade(this.creep)
-    }
   }
 
   return response
