@@ -16,12 +16,12 @@ module.exports = function (creep, opts) {
 
   if (!targets) {
     let structures = creep.room.find(FIND_STRUCTURES, {
-          filter: (structure) => {
-            return (structure.structureType === STRUCTURE_STORAGE ||
+      filter: (structure) => {
+        return (structure.structureType === STRUCTURE_STORAGE ||
                     structure.structureType === STRUCTURE_CONTAINER ||
                     structure.structureType === STRUCTURE_EXTENSION) &&
                     structure.store[RESOURCE_ENERGY] >= 45
-        }
+      }
     })
     targets = structures
   }
@@ -29,38 +29,25 @@ module.exports = function (creep, opts) {
   if (targets.length > 0) {
     let workOrder = creep.withdraw(targets[0], RESOURCE_ENERGY)
     if (workOrder === ERR_NOT_IN_RANGE) {
-      creep.moveTo(targets[0])
-    } else if (workOrder === ERR_NOT_ENOUGH_RESOURCES) {
-        targets.shift()
-    } else if (creep.carry.energy === creep.carryCapacity) {
-    creep.say('✖ full ✖')
-    creep.memory.mode = 'work'
-    return 1
-  }
-  } else if (!targets.length){
-    creep.say('🤷‍♀️ no energy')
-    creep.memory.mode ='mine'
-    return 1
-  }
-  return 0
-}
-
-
-
-
-
-
-
-  let workOrder = creep.harvest(target)
-  if (workOrder === ERR_NOT_IN_RANGE) {
     // TODO: make pathfind job
-    let moveOpts = opts.moveOpts || {}
-    creep.moveTo(target, moveOpts)
+      let moveOpts = opts.moveOpts || {}
+      creep.moveTo(target, moveOpts)
+    } else if (workOrder === ERR_NOT_ENOUGH_RESOURCES) {
+      targets.shift()
+      return 0
+    } else if (creep.carry.energy === creep.carryCapacity) {
+      creep.say('✖ full ✖')
+      creep.memory.mode = 'work'
+      return 1
+    }
+  } else if (!targets.length) {
+    creep.say('🤷‍♀️ no energy')
+    creep.memory.mode = 'mine'
+    return 1
   } else if (workOrder) {
     if (workOrder !== ERR_BUSY) {
       console.log(creep.name + ' Mine error: ' + workOrder)
     }
   }
-
   return 0
 }
