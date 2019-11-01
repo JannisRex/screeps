@@ -7,5 +7,6 @@ module.exports.lib = {
   safemode: require('lib.safemode')
 }
 module.exports.buildings = {
+  road: require('building.road'),
   tower: require('building.tower')
 }
