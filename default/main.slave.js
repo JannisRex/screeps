@@ -152,7 +152,7 @@ Slave.prototype.work = function () {
     if (response === 2) {
       if (this.creep.role === 'builder') {
         response = doRepair(this.creep)
-      } else if (this.creeps.role === 'repairer') {
+      } else if (this.creep.role === 'repairer') {
         response = doBuild(this.creep)
       } else {
         response = doUpgrade(this.creep)
