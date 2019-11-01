@@ -25,14 +25,14 @@ module.exports = function (creep, opts) {
     target = sources[0]
   }
 
-  let e = creep.harvest(target)
-  if (e === ERR_NOT_IN_RANGE) {
+  let workOrder = creep.harvest(target)
+  if (workOrder === ERR_NOT_IN_RANGE) {
     // TODO: make pathfind job
     let moveOpts = opts.moveOpts || {}
     creep.moveTo(target, moveOpts)
-  } else if (e) {
-    if (e !== ERR_BUSY) {
-      console.log(creep.name + ' Mine error: ' + e)
+  } else if (workOrder) {
+    if (workOrder !== ERR_BUSY) {
+      console.log(creep.name + ' Mine error: ' + workOrder)
     }
   } else if (creep.carry.energy === creep.carryCapacity) {
     creep.say('✖ full ✖')
