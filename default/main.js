@@ -43,6 +43,9 @@ module.exports.loop = function () {
   for (let name in Game.creeps) {
     if (Game.creeps[name]) {
       let creep = Game.creeps[name]
+      if (creep.spawning || creep.memory.role === undefined) {
+        continue
+      }
       new task[creep.memory.job](creep).tick()
     }
   }
