@@ -17,7 +17,7 @@ module.exports.loop = function () {
   // TODO: deal with multiple spawns
   spawn.memory.slaves = spawn.memory.slaves || {}
   cleanupDeadCreeps()
-  // roadControl.()
+  // roadControl.buildToSources()
   // towerControl.attackClosest($ID)
   // towerControl.repairClosest($ID)
 
