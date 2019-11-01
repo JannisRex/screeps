@@ -1,5 +1,5 @@
 function howManyChargers() {
-  return 3
+  return 2
 }
 
 function howManyUpgraders() {
@@ -10,11 +10,16 @@ function howManyBuilders() {
   return 2
 }
 
+function howManyRepairers() {
+  return 1
+}
+
 module.exports = {
-  spawnPriority: [ 'charger', 'upgrader', 'builder' ],
+  spawnPriority: [ 'charger', 'upgrader', 'builder', 'repairer' ],
   targetCounts: {
     charger: howManyChargers(),
     upgrader: howManyUpgraders(),
-    builder: howManyBuilders()
+    builder: howManyBuilders(),
+    repairer: howManyRepairers()
   }
 }

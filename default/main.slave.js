@@ -39,7 +39,7 @@ Slave.prototype.mode = function () {
     MOVE = 50
 */
 Slave.spawn = function (spawn, role, name) {
-  let availableEnergy = Game.spawns.S1.room.energyAvailable
+  let availableEnergy = Game.spawns.S1.room.energyCapacityAvailable
   let availableParts = maxCreepParts
   let creepParts = []
 
@@ -152,6 +152,8 @@ Slave.prototype.work = function () {
     if (response === 2) {
       if (this.creep.role === 'builder') {
         response = doRepair(this.creep)
+      } else if (this.creeps.role === 'repairer') {
+        response = doBuild(this.creep)
       } else {
         response = doUpgrade(this.creep)
       }
