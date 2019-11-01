@@ -166,7 +166,8 @@ Slave.prototype.work = function () {
       if (this.creep.role === 'builder') {
         response = doRepair(this.creep)
       } else if (this.creep.role === 'repairer') {
-        response = doBuild(this.creep)
+        response = doUpgrade(this.creep) // If theres nothing to repair not to build it'll loop and rip my colony
+        // response = doBuild(this.creep)
       } else {
         response = doUpgrade(this.creep)
       }
