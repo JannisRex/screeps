@@ -1,7 +1,7 @@
 # SCREEPS SCRIPT
 ---
 
-## colony dying @night idk when or how
+## colony dying @night idk when or how (mb new() breaks or some reference gets missing)
 
 ---
 ### TODO
