@@ -1,5 +1,9 @@
 # SCREEPS SCRIPT
 ---
+
+## colony dying @night idk when or how
+
+---
 ### TODO
   
   * Change Work/Delivery/Spawn routine => Split Work to different Creeps
