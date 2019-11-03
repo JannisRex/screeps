@@ -44,7 +44,7 @@ module.exports = {
           availableCreeps[type] = 0
         }
 
-        let upperBorder = availableCreeps[i] + 1
+        let upperBorder = availableCreeps[type] + 1
         let match = getCount(type, true)
 
         if (upperBorder > match) {
