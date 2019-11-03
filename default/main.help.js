@@ -9,14 +9,14 @@ module.exports = {
     }
 
     Memory.helperInit = true
-    this.loop()
+    this.initMemory()
   },
 
   doThisThing: function () {
     this.spawnCreeps()
   },
 
-  loop: function () {
+  initMemory: function () {
     if (Memory.spawnQue === undefined) {
       Memory.spawnQue = [ ]
     }
