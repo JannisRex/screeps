@@ -11,7 +11,7 @@ function howManyBuilders() {
 }
 
 function howManyRepairers() {
-  return 1
+  return 0
 }
 
 module.exports = {
