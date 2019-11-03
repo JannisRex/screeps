@@ -59,5 +59,5 @@ module.exports = {
     repairer: howManyRepairers()
   },
   getCount: getCountOfType,
-  spawnOrder: ['miner', 'miner', 'builder']
+  spawnOrder: ['miner', 'miner']
 }
