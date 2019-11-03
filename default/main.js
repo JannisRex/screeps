@@ -1,15 +1,8 @@
-let creepHandler = require('main.help')
-let assignRoles = require('assignRoles')
-let creepSpawner = require('creep._Spawner')
+let creepHandler = require('index').lib.helper
+let creepSpawner = require('index').lib.spawner
+let assignRoles = require('index').functions.assignRoles
+let cleanupDeadCreeps = require('index').functions.cleanupDeadCreeps
 
-function cleanupDeadCreeps() {
-  for (let name in Memory.creeps) {
-    if (!Game.creeps[name]) {
-      console.log('Clearing non-existing creep memory: ', name)
-      delete Memory.creeps[name]
-    }
-  }
-}
 
 module.exports.loop = function () {
   let spawn = Game.spawns.S1
