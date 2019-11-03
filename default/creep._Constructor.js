@@ -33,7 +33,7 @@ let _Constructor = {
   },
 
   getParts: function () {
-    return this.parts
+    return this.parts()
   },
 
 
