@@ -29,7 +29,7 @@ module.exports =
     }
 
     let room = Game.rooms[Game.spawns.S1.room.name]
-    let spawns = room.find(Game.MY_SPAWNS, {
+    let spawns = room.find(FIND_MY_SPAWNS, {
       filter: function (spawn) {
         return spawn.spawning === undefined || spawn.spawning === null
       }
