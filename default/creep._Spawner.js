@@ -20,7 +20,7 @@ module.exports =
     }
   },
 
-  spawnNextInQue: function () {
+  spawnQue: function () {
     this.__Constructor()
 
     // if que is empty
