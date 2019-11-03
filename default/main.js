@@ -1,5 +1,6 @@
-let Handler = require('main.help')
+let creepHandler = require('main.help')
 let assignRoles = require('assignRoles')
+let creepSpawner = require('creep._Spawner')
 
 function cleanupDeadCreeps() {
   for (let name in Memory.creeps) {
@@ -17,8 +18,10 @@ module.exports.loop = function () {
   spawn.memory.slaves = spawn.memory.slaves || {}
   cleanupDeadCreeps()
 
-  Handler.__constructor()
-  Handler.doThisThing()
+  creepHandler.__constructor()
+  creepHandler.doThisThing()
+
+  creepSpawner.spawnQue()
 
   assignRoles()
 }
