@@ -50,6 +50,7 @@ function getCountOfType(type, checkQue) {
 }
 
 module.exports = {
+  maxCreepParts: 13, // upper border for dynamic sizing
   spawnPriority: [ 'charger', 'upgrader', 'builder', 'repairer'],
   targetCounts: {
     charger: howManyChargers(),
