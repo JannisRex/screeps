@@ -13,7 +13,7 @@ module.exports.functions = {
 }
 
 module.exports.creeps = {
-  miner: require(creep.miner)
+  miner: require('creep.miner')
 }
 
 module.exports.buildings = {

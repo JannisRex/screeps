@@ -1,5 +1,5 @@
 module.exports = function (creeps) {
-  let creepManager = require('creeap._Manager')
+  let creepManager = require('creep._Manager')
   let role = { }
 
   // iterate throuhg all creeps and

@@ -24,7 +24,7 @@ module.exports = {
       Memory.availableSources = { }
     }
 
-    if (Memomry.spawnOrder === undefined) {
+    if (Memory.spawnOrder === undefined) {
       Memory.spawnOrder = spawnOrder
     }
   },

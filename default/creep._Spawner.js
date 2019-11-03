@@ -9,7 +9,7 @@ module.exports =
   // just takes creep and a boolean, wether
   // to unshift or push
   addElement: function (creep, unshift) {
-    this.__Constructor()
+    this.__constructor()
 
     if (unshift !== undefined && unshift === true) {
       // put in front
@@ -21,7 +21,7 @@ module.exports =
   },
 
   spawnQue: function () {
-    this.__Constructor()
+    this.__constructor()
 
     // if que is empty
     if (!Memory.spawnQue.length) {
