@@ -34,8 +34,9 @@ let _Constructor = {
 
   getParts: function () {
     let _ = require('lodash')
+    let room = Game.rooms[Game.spawns.S1.room.name]
 
-    let extensions = Game.getRoom('1-1').find(Game.MY_STRUCTURES, {
+    let extensions = room.find(FIND_MY_STRUCTURES, {
       filter: function (structure) {
         return (structure.structureType === Game.STRUCTURE_EXTENSION && structure.energy >= 200)
       }
