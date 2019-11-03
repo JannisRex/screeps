@@ -16,5 +16,5 @@ module.exports.loop = function () {
 
   creepSpawner.spawnQue()
 
-  assignRoles()
+  assignRoles(Game.creeps)
 }
