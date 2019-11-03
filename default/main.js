@@ -1,4 +1,5 @@
 let Handler = require('main.help')
+let assignRoles = require('assignRoles')
 
 function cleanupDeadCreeps() {
   for (let name in Memory.creeps) {
@@ -19,4 +20,5 @@ module.exports.loop = function () {
   Handler.__constructor()
   Handler.doThisThing()
 
+  assignRoles()
 }
