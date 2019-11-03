@@ -1,5 +1,5 @@
-let spawnOrder = require('index').lib.config.spawnOrder
-let getCount = require('index').lib.config.getCount
+let spawnOrder = require('config').spawnOrder
+let getCount = require('config').getCount
 
 module.exports = {
 
