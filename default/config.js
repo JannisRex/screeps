@@ -15,7 +15,7 @@ function howManyRepairers() {
 }
 
 function getCountOfType(type, checkQue) {
-  let thisRoom = Game.spawns.S1.room.name
+  let thisRoom = Game.rooms[Game.spawns.S1.room.name]
 
   let count = thisRoom.find(FIND_MY_CREEPS, {
     filter: function (creep) {
