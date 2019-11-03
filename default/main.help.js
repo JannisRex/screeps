@@ -45,7 +45,7 @@ module.exports = {
         }
 
         let upperBorder = availableCreeps[i] + 1
-        let match = getCount(type)
+        let match = getCount(type, true)
 
         if (upperBorder > match) {
           Memory.spawnQue.push(type)
