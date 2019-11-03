@@ -13,7 +13,7 @@ function cleanupDeadCreeps() {
 }
 
 module.exports.loop = function () {
-  const spawn = Game.spawns.S1
+  let spawn = Game.spawns.S1
 
   // TODO: deal with multiple spawns
   spawn.memory.slaves = spawn.memory.slaves || {}
