@@ -82,6 +82,41 @@ module.exports =
         || spawnPoint.spawning === undefined)
   },
 
+  spawn: function (role, memory, spawnPoint) {
+    if (!spawnPoint) {
+      spawnPoint = Game.spawns.S1
+    }
+
+    let creepManager = require('creep._Manager')
+
+    if (!creepManager.roleExists(role)) {
+      return
+    }
+
+    if (!this.canSpawn(spawnPoint, role)) {
+      return
+    }
+
+    if (memory === undefined) {
+      memory = { }
+    }
+
+    memory.role = role
+
+    let nameCount = 0
+    let name = null
+    while (name === null) {
+      nameCount = nameCount + 1
+      let plsDontExist = role + nameCount
+      if (Game.creeps[plsDontExist] === undefined) {
+        name = plsDontExist
+      }
+    }
+
+    console.log('Spawning ' + name || role)
+    spawnPoint.createCreep(creepManager.getRoleBodyParts(role), name, memory)
+  },
+
   spawnQue: function () {
     this.__constructor()
 
@@ -129,41 +164,6 @@ module.exports =
     this.spawn(role.type, role.memory, toSpawnAt)
 
     Memory.spawnQue.shift()
-  },
-
-  spawn: function (role, memory, spawnPoint) {
-    if (!spawnPoint) {
-      spawnPoint = Game.spawns.S1
-    }
-
-    let creepManager = require('creep._Manager')
-
-    if (!creepManager.roleExists(role)) {
-      return
-    }
-
-    if (!this.canSpawn(spawnPoint, role)) {
-      return
-    }
-
-    if (memory === undefined) {
-      memory = { }
-    }
-
-    memory.role = role
-
-    let nameCount = 0
-    let name = null
-    while (name === null) {
-      nameCount = nameCount + 1
-      let plsDontExist = role + nameCount
-      if (Game.creeps[plsDontExist] === undefined) {
-        name = plsDontExist
-      }
-    }
-
-    console.log('Spawning ' + name || role)
-    spawnPoint.createCreep(creepManager.getRoleBodyParts(role), name, memory)
   },
 
   // either kill all of specific role
