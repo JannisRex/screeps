@@ -5,16 +5,11 @@ let cleanupDeadCreeps = require('index').functions.cleanupDeadCreeps
 
 
 module.exports.loop = function () {
-  let spawn = Game.spawns.S1
-
-  // TODO: deal with multiple spawns
-  spawn.memory.slaves = spawn.memory.slaves || {}
-  cleanupDeadCreeps()
-
   creepHandler.__constructor()
   creepHandler.doThisThing()
 
   creepSpawner.spawnQue()
 
   assignRoles(Game.creeps)
+  cleanupDeadCreeps()
 }
