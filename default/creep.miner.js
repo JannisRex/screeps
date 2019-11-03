@@ -16,7 +16,7 @@ let miner = {
       availableEnergy = availableEnergy - 250
     }
 
-    return creepParts || [WORK, CARRY, MOVE]
+    return creepParts || [WORK, MOVE]
   },
 
   getOpenSource: function () {
