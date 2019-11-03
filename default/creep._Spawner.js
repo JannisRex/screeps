@@ -1,6 +1,6 @@
 module.exports =
 {
-  __Constructor: function () {
+  __constructor: function () {
     if (Memory.spawnQue === undefined) {
       Memory.spawnQue = [ ]
     }
