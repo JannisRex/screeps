@@ -13,7 +13,7 @@ module.exports = {
 
   roleExists: function (role) {
     try {
-      require('roles_' + role)
+      require('creep.' + role)
       return true
     } catch (e) {
       return false
