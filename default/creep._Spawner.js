@@ -114,7 +114,7 @@ module.exports =
     }
 
     console.log('Spawning ' + name || role)
-    spawnPoint.createCreep(creepManager.getRoleBodyParts(role), name, memory)
+    spawnPoint.spawnCreep(creepManager.getRoleBodyParts(role), name, memory)
   },
 
   spawnQue: function () {
