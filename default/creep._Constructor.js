@@ -33,29 +33,7 @@ let _Constructor = {
   },
 
   getParts: function () {
-    let _ = require('lodash')
-    let room = Game.rooms[Game.spawns.S1.room.name]
-
-    let extensions = room.find(FIND_MY_STRUCTURES, {
-      filter: function (structure) {
-        return (structure.structureType === Game.STRUCTURE_EXTENSION && structure.energy >= 200)
-      }
-    }).length
-
-    let parts = _.cloneDeep(this.parts)
-    if (typeof parts[0] !== 'object') {
-      return this.parts
-    }
-
-    parts.reverse()
-
-    for (let i in parts) {
-      if ((parts[i].length - 5) <= extensions) {
-        return parts[i]
-      }
-    }
-
-    return [WORK, CARRY, MOVE]
+    return this.parts
   },
 
 
