@@ -1,19 +1,3 @@
-function howManyChargers() {
-  return 3
-}
-
-function howManyUpgraders() {
-  return 2
-}
-
-function howManyBuilders() {
-  return 2
-}
-
-function howManyRepairers() {
-  return 0
-}
-
 function getCountOfType(type, checkQue) {
   let thisRoom = Game.rooms[Game.spawns.S1.room.name]
 
