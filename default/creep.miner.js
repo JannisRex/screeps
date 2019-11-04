@@ -2,11 +2,11 @@ let miner = {
   parts: function () {
     let availableEnergy = Game.spawns.S1.room.energyAvailable
     let availableParts = require('config').maxCreepParts
-    let creepParts = [ ]
+    let creepParts = [WORK, WORK, MOVE]
 
     // if theres still 'room' to make 2xWork + 1xCarry + 1xMove
     // and enough energy in storage
-    while (availableParts >= 3 && availableEnergy >= 250) {
+    while (availableParts - 3 >= 3 && availableEnergy - 250 >= 250) {
     // pushing parts to array, which will be used to spawn creep
       creepParts.push(WORK)
       creepParts.push(WORK)
@@ -75,9 +75,12 @@ let miner = {
 
     // adds needed helper to Que (at front)
     for (let i = 0; i < helpersNeeded; i++) {
+      console.log('ADDING HELPER TO QUE: ', i)
       Memory.spawnQue.unshift({ type: 'miner_helper', memory: {
         miner: creep.id
       } })
+
+      console.log(JSON.stringify(Memory.spawnQue))
     }
 
     creep.memory.helpersNeeded = helpersNeeded
