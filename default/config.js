@@ -33,8 +33,40 @@ function getCountOfType(type, checkQue) {
   return count
 }
 
+function howManyMiner() {
+  return 2
+}
+
+function howManyUpgrader() {
+  return 2
+}
+
+function howManyBuilder() {
+  return 1
+}
+
+function howManyRanger() {
+  return 0
+}
+
+function howManyFighter() {
+  return 0
+}
+
+function howManyHealer() {
+  return 0
+}
+
 module.exports = {
   maxCreepParts: 13, // upper border for dynamic sizing
   getCount: getCountOfType,
-  spawnOrder: ['miner', 'miner']
+  initialSpawnOrder: ['miner', 'miner'],
+  spawnCount: {
+    miner: howManyMiner(),
+    upgrader: howManyUpgrader(),
+    builder: howManyBuilder(),
+    ranger: howManyRanger(),
+    fighter: howManyFighter(),
+    healer: howManyHealer()
+  }
 }
