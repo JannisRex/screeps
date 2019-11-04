@@ -68,7 +68,8 @@ let upgrader = {
     } else {
       this.rest()
     }
-  },
+  }
+},
 
   action: function () {
     let creep = this.creep
