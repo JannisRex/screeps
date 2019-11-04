@@ -1,5 +1,4 @@
-let spawnOrder = require('config').spawnOrder
-let getCount = require('config').getCount
+let config = require('config')
 
 module.exports = {
 
@@ -24,40 +23,44 @@ module.exports = {
       Memory.availableSources = { }
     }
 
-    if (Memory.spawnOrder === undefined) {
-      Memory.spawnOrder = spawnOrder
+    if (Memory.initialSpawnOrder === undefined) {
+      Memory.initialSpawnOrder = config.initialSpawnOrder
     }
   },
 
+  initSpawnQueue: function () {
+    if (Memory.spawnQueInit !== undefined) {
+      return
+    }
+
+    let order = Memory.initialSpawnOrder
+
+    for (let i in order) {
+      if (order[i]) {
+        console.log('PUSHING _', order[i], '_ TO INITIAL QUE')
+        Memory.spawnQue.push(order[i])
+      }
+    }
+
+    Memory.spawnQueInit = true
+  },
+
   spawnCreeps: function () {
-    let neededCreeps = Memory.spawnOrder
+    this.initSpawnQueue()
 
-    // essentially all creeps alive
-    // under my control
-    let availableCreeps = { }
+    if (Memory.spawnQueInit) {
+      for (let creepType in config.availableCreeps) {
+        if (typeof creepType === 'string') {
+          console.log('CREEPTYPE: ', creepType)
+          let count = config.getCount(creepType, true)
+          let preferredCount = config.spawnCount[type]
+          console.log('COUNT ^: ', count)
 
-    for (let i in neededCreeps) {
-      if (neededCreeps[i]) {
-        let type = neededCreeps[i]
-
-        if (availableCreeps[type] === undefined) {
-          console.log('TYPE: ', type, ' UNDEF')
-          availableCreeps[type] = 0
+          if (count < preferredCount) {
+            console.log('PUSHING TO QUE: ', type)
+            Memory.spawnQue.push(type)
+          }
         }
-
-        let upperBorder = availableCreeps[type] + 1
-        let match = getCount(type, true)
-
-        console.log('upperBorder: ', upperBorder)
-        console.log('match: ', match)
-
-        if (upperBorder > match) {
-          console.log('PUSHING TO QUE: ', type)
-          Memory.spawnQue.push(type)
-        }
-
-        availableCreeps[type] = availableCreeps[type] + 1
-        console.log('COUNT:', availableCreeps[type], 'TYPE: ', type)
       }
     }
   }
