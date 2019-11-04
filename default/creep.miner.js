@@ -20,13 +20,14 @@ let miner = {
   },
 
   getOpenSource: function () {
-    console.log('GETOPENSOURCE TRIGGERED')
     let creep = this.creep
 
     // checks wether or not clostest source is being mined by a miner
     let source = creep.pos.findClosestByPath(FIND_SOURCES, {
       filter: function (source) {
-        if (Memory.availableSources[source.id] === undefined || Memory.availableSources[source.id].miner === undefined || Memory.availableSources[source.id].miner === creep.id) {
+        if (Memory.availableSources[source.id] === undefined ||
+            Memory.availableSources[source.id].miner === undefined ||
+            Memory.availableSources[source.id].miner === creep.id) {
           return true
         }
 
@@ -42,7 +43,6 @@ let miner = {
   },
 
   setSourceToMine: function (source) {
-    console.log('SETSOURCE TO MINE TRIGGERED')
     let creep = this.creep
 
     if (!source) {
@@ -74,17 +74,17 @@ let miner = {
     }
 
     // adds needed helper to Que (at front)
-    for (let i = 0; i <= helpersNeeded; i++) {
+    for (let i = 0; i < helpersNeeded; i++) {
       Memory.spawnQue.unshift({ type: 'miner_helper', memory: {
         miner: creep.id
       } })
     }
 
     creep.memory.helpersNeeded = helpersNeeded
+    creep.say('⛏mining⛏')
   },
 
   onSpawn: function () {
-    console.log('ON SPAWN TRIGGERED')
     let creep = this.creep
 
     // creates properties to prevent null or undef
@@ -103,7 +103,6 @@ let miner = {
   // then it waits untill respawn. Energy gets
   // just dropped to ground for later pick
   action: function () {
-    console.log('ACTION TRIGGERED')
     let creep = this.creep
     let source = Game.getObjectById(creep.memory.source)
 
