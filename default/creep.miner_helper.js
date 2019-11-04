@@ -90,7 +90,6 @@ let helper = {
               structure.store[RESOURCE_ENERGY] < structure.energyCapacity
         }
       })
-      console.log(possibleTargets)
       // order by distance
       possibleTargets = _.sortBy(possibleTargets, t => creep.pos.getRangeTo(t))
 
@@ -140,7 +139,7 @@ let helper = {
       filter: function (possibleTarget) {
         return (
           possibleTarget.memory.role === creep.memory.role
-          && possibleTarget.store[RESOURCE_ENERGY] < possibleTarget.store.getCapacity()
+          && possibleTarget.store[RESOURCE_ENERGY] < possibleTarget.energyCapacity
           && creep.pos.inRangeTo(possibleTarget, 1)
           && (
             creep.pos.getDirectionTo(possibleTarget) === targetDirection
@@ -159,10 +158,10 @@ let helper = {
 
     // If we're near to the target, either give it our energy or drop it
     if (creep.pos.isNearTo(target)) {
-      if (target.store[RESOURCE_ENERGY] < target.store.getCapacity()) {
-        creep.transferEnergy(target)
+      if (target.store[RESOURCE_ENERGY] < target.energyCapacity) {
+        creep.transfer(target, RESOURCE_ENERGY)
       } else {
-        creep.dropEnergy()
+        creep.dropEnergy(RESOURCE_ENERGY)
       }
     } else {
       creep.moveTo(target)
