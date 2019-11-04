@@ -66,7 +66,7 @@ let _Constructor = {
 
     // approach target untill distance reached
     if (creep.pos.findPathTo(restTarget).length > distance) {
-      creep.moveTo(restTarget, { visualizePathStyle: { stroke: '#00EEEE' } })
+      creep.moveTo(restTarget, { visualizePathStyle: { stroke: '#00EEEE', opacity: 0.5 } })
     }
   },
 
@@ -91,7 +91,7 @@ let _Constructor = {
 
     let target = creep.pos.findNearest(Game.HOSTILE_CREEPS)
     if (target !== null && target.pos.inRangeTo(creep.pos, 3)) {
-      creep.moveTo(creep.pos.x + creep.pos.x - target.pos.x, creep.pos.y + creep.pos.y - target.pos.y, { visualizePathStyle: { stroke: '#000000' } })
+      creep.moveTo(creep.pos.x + creep.pos.x - target.pos.x, creep.pos.y + creep.pos.y - target.pos.y, { visualizePathStyle: { stroke: '#000000', opacity: 0.5 } })
     }
   },
 
@@ -101,13 +101,13 @@ let _Constructor = {
     if (target.pos.inRangeTo(creep.pos, 2)) {
       // when inclose range, creep starts to
       // 'mirror' hostile Creeps and kite them
-      creep.moveTo(creep.pos.x + creep.pos.x - target.pos.x, creep.pos.y + creep.pos.y - target.pos.y, { visualizePathStyle: { stroke: '#ffffff' } })
+      creep.moveTo(creep.pos.x + creep.pos.x - target.pos.x, creep.pos.y + creep.pos.y - target.pos.y, { visualizePathStyle: { stroke: '#ffffff', opacity: 0.5 } })
       return true
     } else if (target.pos.inRangeTo(creep.pos, 3)) {
       return true
     }
 
-    creep.moveTo(target, { visualizePathStyle: { stroke: '#ffffff' } })
+    creep.moveTo(target, { visualizePathStyle: { stroke: '#ffffff', opacity: 0.5 } })
     return true
   },
 

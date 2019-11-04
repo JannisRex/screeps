@@ -70,7 +70,7 @@ let helper = {
         let energy = creep.pos.findInRange(FIND_DROPPED_RESOURCES, 1)[0]
         creep.pickup(energy)
       } else if (miner.memory.isNearSource) {
-        creep.moveTo(miner, { visualizePathStyle: { stroke: '#FF4500' } })
+        creep.moveTo(miner, { visualizePathStyle: { stroke: '#FF4500', opacity: 0.5 } })
       }
 
       return
@@ -164,7 +164,7 @@ let helper = {
         creep.dropEnergy(RESOURCE_ENERGY)
       }
     } else {
-      creep.moveTo(target, { visualizePathStyle: { stroke: '#FFFF00' } })
+      creep.moveTo(target, { visualizePathStyle: { stroke: '#FFFF00', opacity: 0.5 } })
     }
   }
 }

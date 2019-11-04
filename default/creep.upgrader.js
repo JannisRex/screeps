@@ -56,7 +56,7 @@ let upgrader = {
     if (targets.length > 0) {
       let workOrder = creep.withdraw(targets[0], RESOURCE_ENERGY)
       if (workOrder === ERR_NOT_IN_RANGE) {
-        creep.moveTo(target, { visualizePathStyle: { stroke: '#FF4500' } })
+        creep.moveTo(target, { visualizePathStyle: { stroke: '#FF4500', opacity: 0.5 } })
       }
     } else /* if (!targets.length) */ {
       this.rest()
@@ -69,7 +69,7 @@ let upgrader = {
     let workOrder = creep.upgradeController(creep.room.controller)
 
     if (workOrder === ERR_NOT_IN_RANGE) {
-      creep.moveTo(creep.room.controller, { visualizePathStyle: { stroke: '#ff80ed' } })
+      creep.moveTo(creep.room.controller, { visualizePathStyle: { stroke: '#ff80ed', opacity: 0.5 } })
     } else if (workOrder === ERR_NOT_ENOUGH_RESOURCES) {
       creep.say('🤷‍♀️ no energy')
       this.withDrawEnergy()
