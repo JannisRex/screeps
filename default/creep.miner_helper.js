@@ -87,10 +87,10 @@ let helper = {
               structure.structureType === STRUCTURE_TOWER ||
               structure.structureType === STRUCTURE_STORAGE ||
               structure.structureType === STRUCTURE_CONTAINER) &&
-              structure.store[RESOURCE_ENERGY] < structure.store.getCapacity()
+              structure.store[RESOURCE_ENERGY] < structure.energyCapacity
         }
       })
-
+      console.log(possibleTargets)
       // order by distance
       possibleTargets = _.sortBy(possibleTargets, t => creep.pos.getRangeTo(t))
 
