@@ -2,19 +2,17 @@ let helper = {
   parts: function () {
     let availableEnergy = Game.spawns.S1.room.energyAvailable
     let availableParts = require('config').maxCreepParts
-    let creepParts = [ ]
+    let creepParts = [MOVE, CARRY]
 
     // if theres still 'room' to make 2xCarry + 2xMove
     // and enough energy in storage
-    while (availableParts >= 4 && availableEnergy >= 200) {
+    while (availableParts - 2 >= 2 && availableEnergy - 100 >= 100) {
     // pushing parts to array, which will be used to spawn creep
       creepParts.push(MOVE)
-      creepParts.push(MOVE)
-      creepParts.push(CARRY)
       creepParts.push(CARRY)
 
-      availableParts = availableParts - 4
-      availableEnergy = availableEnergy - 200
+      availableParts = availableParts - 2
+      availableEnergy = availableEnergy - 100
     }
 
     return creepParts || [CARRY, MOVE]
