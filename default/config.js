@@ -28,8 +28,15 @@ function getCountOfType(type, checkQue) {
         }
       }
     }
+
+    for (let i in Memory.spawnQue) {
+      if (Memory.spawnQue[i] === type) {
+        count = count + 1
+      }
+    }
   }
 
+  console.log('TYPE: ', type, 'COUNT: ', count)
   return count
 }
 
@@ -61,12 +68,13 @@ module.exports = {
   maxCreepParts: 13, // upper border for dynamic sizing
   getCount: getCountOfType,
   initialSpawnOrder: ['miner', 'miner'],
+  availableCreeps: ['miner', 'upgrader', 'builder', 'ranger', 'healer', 'fighter'],
   spawnCount: {
     miner: howManyMiner(),
     upgrader: howManyUpgrader(),
     builder: howManyBuilder(),
     ranger: howManyRanger(),
-    fighter: howManyFighter(),
-    healer: howManyHealer()
+    healer: howManyHealer(),
+    fighter: howManyFighter()
   }
 }
