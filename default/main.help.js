@@ -41,17 +41,23 @@ module.exports = {
         let type = neededCreeps[i]
 
         if (availableCreeps[type] === undefined) {
+          console.log('TYPE: ', type, ' UNDEF')
           availableCreeps[type] = 0
         }
 
         let upperBorder = availableCreeps[type] + 1
         let match = getCount(type, true)
 
+        console.log('upperBorder: ', upperBorder)
+        console.log('match: ', match)
+
         if (upperBorder > match) {
+          console.log('PUSHING TO QUE: ', type)
           Memory.spawnQue.push(type)
         }
 
         availableCreeps[type] = availableCreeps[type] + 1
+        console.log('COUNT:', availableCreeps[type], 'TYPE: ', type)
       }
     }
   }
