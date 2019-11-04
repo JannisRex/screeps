@@ -66,7 +66,7 @@ function howManyHealer() {
 module.exports = {
   maxCreepParts: 13, // upper border for dynamic sizing
   getCount: getCountOfType,
-  initialSpawnOrder: ['miner', 'miner'],
+  initialSpawnOrder: ['miner', 'miner', 'upgrader', 'builder'],
   availableCreeps: ['miner', 'upgrader', 'builder', 'ranger', 'healer', 'fighter'],
   spawnCount: {
     miner: howManyMiner(),
