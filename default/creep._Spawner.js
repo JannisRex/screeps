@@ -116,7 +116,10 @@ module.exports =
     }
 
     console.log('Spawning ' + name || role)
-    spawnPoint.spawnCreep(creepManager.getRoleBodyParts(role), name, memory)
+    if (spawnPoint.spawnCreep(creepManager.getRoleBodyParts(role), name, { memory: memory, dryRun: true }) === OK) {
+      console.log('DRY RUN OK')
+      spawnPoint.spawnCreep(creepManager.getRoleBodyParts(role), name, { memory })
+    }
   },
 
   spawnQue: function () {
