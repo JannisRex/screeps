@@ -75,12 +75,9 @@ let miner = {
 
     // adds needed helper to Que (at front)
     for (let i = 0; i < helpersNeeded; i++) {
-      console.log('ADDING HELPER TO QUE: ', i)
       Memory.spawnQue.unshift({ type: 'miner_helper', memory: {
         miner: creep.id
       } })
-
-      console.log(JSON.stringify(Memory.spawnQue))
     }
 
     creep.memory.helpersNeeded = helpersNeeded
