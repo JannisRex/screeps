@@ -56,9 +56,7 @@ let upgrader = {
     if (targets.length > 0) {
       let workOrder = creep.withdraw(targets[0], RESOURCE_ENERGY)
       if (workOrder === ERR_NOT_IN_RANGE) {
-        // TODO: make pathfind job
-        let moveOpts = opts.moveOpts || {}
-        creep.moveTo(target, moveOpts)
+        creep.moveTo(target, { visualizePathStyle: { stroke: '#FF4500' } })
       }
     } else /* if (!targets.length) */ {
       this.rest()
@@ -71,7 +69,7 @@ let upgrader = {
     let workOrder = creep.upgradeController(creep.room.controller)
 
     if (workOrder === ERR_NOT_IN_RANGE) {
-      creep.moveTo(creep.room.controller)
+      creep.moveTo(creep.room.controller, { visualizePathStyle: { stroke: '#ff80ed' } })
     } else if (workOrder === ERR_NOT_ENOUGH_RESOURCES) {
       creep.say('🤷‍♀️ no energy')
       this.withDrawEnergy()

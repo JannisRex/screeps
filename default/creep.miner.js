@@ -134,7 +134,7 @@ let miner = {
 
     // mines from source or movesTo if not in Range
     if (creep.harvest(source) === ERR_NOT_IN_RANGE) {
-      creep.moveTo(source)
+      creep.moveTo(source, { visualizePathStyle: { stroke: '#ffffff' } })
     }
   }
 }
