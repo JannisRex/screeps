@@ -40,6 +40,7 @@ let helper = {
 
     creep.memory.miner = miner.id
     miner.memory.helpers.push(creep.id)
+    creep.say('👷‍♂️ GOT miner')
   },
 
   action: function () {
@@ -150,6 +151,7 @@ let helper = {
 
     // If we found a courier, make that courier our new target
     if (courier !== null && !creep.pos.isNearTo(target)) {
+      creep.say('📦 COURIER')
       target = courier
       target.memory.courier = true
     }
