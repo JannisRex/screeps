@@ -20,16 +20,17 @@ let miner = {
   },
 
   getOpenSource: function () {
+    console.log('GETOPENSOURCE TRIGGERED')
     let creep = this.creep
 
     // checks wether or not clostest source is being mined by a miner
     let source = creep.pos.findClosestByPath(FIND_SOURCES, {
       filter: function (source) {
-        if (Memory.sources[source.id] === undefined || Memory.sources[source.id].miner === undefined || Memory.sources[source.id].miner === creep.id) {
+        if (Memory.availableSources[source.id] === undefined || Memory.availableSources[source.id].miner === undefined || Memory.availableSources[source.id].miner === creep.id) {
           return true
         }
 
-        if (Game.getObjectById(Memory.sources[source.id].miner) === null) {
+        if (Game.getObjectById(Memory.availableSources[source.id].miner) === null) {
           return true
         }
 
@@ -41,6 +42,7 @@ let miner = {
   },
 
   setSourceToMine: function (source) {
+    console.log('SETSOURCE TO MINE TRIGGERED')
     let creep = this.creep
 
     if (!source) {
@@ -49,13 +51,13 @@ let miner = {
 
     // starts to set values in Memory
     // to store if a miner is mining THIS source
-    if (Memory.sources[source.id] === undefined) {
-      Memory.sources[source.id] = { id: source.id }
+    if (Memory.availableSources[source.id] === undefined) {
+      Memory.availableSources[source.id] = { id: source.id }
     }
 
     // stores minerName in Memory @source
     // and stores sourceName in CreepMemory
-    Memory.sources[source.id].miner = creep.id
+    Memory.availableSources[source.id].miner = creep.id
     creep.memory.source = source.id
 
     // gets closest spawn and path to source
@@ -82,6 +84,7 @@ let miner = {
   },
 
   onSpawn: function () {
+    console.log('ON SPAWN TRIGGERED')
     let creep = this.creep
 
     // creates properties to prevent null or undef
@@ -100,6 +103,7 @@ let miner = {
   // then it waits untill respawn. Energy gets
   // just dropped to ground for later pick
   action: function () {
+    console.log('ACTION TRIGGERED')
     let creep = this.creep
     let source = Game.getObjectById(creep.memory.source)
 
@@ -121,13 +125,13 @@ let miner = {
       creep.memory.isNearSource = false
     }
 
-    if (Memory.sources[source.id] === undefined) {
-      Memory.sources[source.id] = { id: source.id }
+    if (Memory.availableSources[source.id] === undefined) {
+      Memory.availableSources[source.id] = { id: source.id }
     }
 
     // when starting to mine, it
     // stores it reference in Memory
-    Memory.sources[source.id].miner = creep.id
+    Memory.availableSources[source.id].miner = creep.id
 
     // mines from source or movesTo if not in Range
     if (creep.harvest(source) === ERR_NOT_IN_RANGE) {
