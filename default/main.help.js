@@ -49,16 +49,14 @@ module.exports = {
     this.initSpawnQueue()
 
     if (Memory.spawnQueInit) {
-      for (let creepType in config.availableCreeps) {
+      for (let creepType of config.availableCreeps) {
         if (typeof creepType === 'string') {
-          console.log('CREEPTYPE: ', creepType)
           let count = config.getCount(creepType, true)
-          let preferredCount = config.spawnCount[type]
-          console.log('COUNT ^: ', count)
+          let preferredCount = config.spawnCount[creepType]
 
           if (count < preferredCount) {
-            console.log('PUSHING TO QUE: ', type)
-            Memory.spawnQue.push(type)
+            console.log('PUSHING TO QUE: ', creepType)
+            Memory.spawnQue.push(creepType)
           }
         }
       }
