@@ -90,10 +90,12 @@ module.exports =
     let creepManager = require('creep._Manager')
 
     if (!creepManager.roleExists(role)) {
+      console.log('ROLE DOESNT EXIST: ', role)
       return
     }
 
     if (!this.canSpawn(spawnPoint, role)) {
+      console.log('THIS CANTSPAWNT: ', role)
       return
     }
 
