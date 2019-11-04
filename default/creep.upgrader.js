@@ -57,6 +57,8 @@ let upgrader = {
       let workOrder = creep.withdraw(targets[0], RESOURCE_ENERGY)
       if (workOrder === ERR_NOT_IN_RANGE) {
         creep.moveTo(target, { visualizePathStyle: { stroke: '#FF4500', opacity: 0.5 } })
+      } else if (workOrder === ERR_FULL) {
+        creep.say('❌full❌')
       }
     } else /* if (!targets.length) */ {
       this.rest()
