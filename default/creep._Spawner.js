@@ -77,10 +77,6 @@ module.exports =
       spawnPoint = Game.spawns.S1
     }
 
-    console.log('energy: ', spawnPoint.room.energyAvailable >= this.spawnCost(role))
-    console.log('spawning.null: ', spawnPoint.spawning === null)
-    console.log('spawning.undef', spawnPoint.spawning === undefined)
-
     return spawnPoint.room.energyAvailable >= this.spawnCost(role)
       && (spawnPoint.spawning === null
         || spawnPoint.spawning === undefined)
@@ -94,12 +90,10 @@ module.exports =
     let creepManager = require('creep._Manager')
 
     if (!creepManager.roleExists(role)) {
-      console.log('ROLE DOESNT EXIST: ', role)
       return
     }
 
     if (!this.canSpawn(spawnPoint, role)) {
-      console.log('THIS CANTSPAWNT: ', role)
       return
     }
 
@@ -119,9 +113,8 @@ module.exports =
       }
     }
 
-    // console.log('Spawning ' + name || role)
+    console.log('Spawning ' + name || role)
     if (spawnPoint.spawnCreep(creepManager.getRoleBodyParts(role), name, { memory: memory, dryRun: true }) === OK) {
-      console.log('spawnPoint.spawnCreep()')
       spawnPoint.spawnCreep(creepManager.getRoleBodyParts(role), name, { memory })
     }
   },
@@ -148,6 +141,9 @@ module.exports =
 
     let role = Memory.spawnQue[0]
 
+    // so essentially every creep, that gets created
+    // by passing 'miner' etc. and not like 'miner_helper',
+    // where I pass an object containing type & memory
     if (typeof role === 'string') {
       role = { type: role, memory: { } }
     }
@@ -171,7 +167,6 @@ module.exports =
     toSpawnAt = toSpawnAt[0]
 
     this.spawn(role.type, role.memory, toSpawnAt)
-
     Memory.spawnQue.shift()
   },
 
