@@ -36,7 +36,6 @@ function getCountOfType(type, checkQue) {
     }
   }
 
-  console.log('TYPE: ', type, 'COUNT: ', count)
   return count
 }
 
