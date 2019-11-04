@@ -11,8 +11,6 @@ function getCountOfType(type, checkQue) {
     }
   }).length
 
-  console.log('TYPE: ', type, '| count: ', count)
-
   if (checkQue === undefined) {
     checkQue = false
   }
@@ -38,5 +36,5 @@ function getCountOfType(type, checkQue) {
 module.exports = {
   maxCreepParts: 13, // upper border for dynamic sizing
   getCount: getCountOfType,
-  spawnOrder: ['miner']
+  spawnOrder: ['miner', 'miner']
 }
