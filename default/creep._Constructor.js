@@ -74,7 +74,7 @@ let _Constructor = {
     let creep = this.creep
 
     if (!target) {
-      target = creep.pos.findNearest(Game.HOSTILE_CREEPS)
+      target = creep.pos.findNearest(FIND_HOSTILE_CREEPS)
     }
 
     if (target) {
@@ -89,7 +89,7 @@ let _Constructor = {
   keepAwayFromEnemies: function () {
     let creep = this.creep
 
-    let target = creep.pos.findNearest(Game.HOSTILE_CREEPS)
+    let target = creep.pos.findNearest(FIND_HOSTILE_CREEPS)
     if (target !== null && target.pos.inRangeTo(creep.pos, 3)) {
       creep.moveTo(creep.pos.x + creep.pos.x - target.pos.x, creep.pos.y + creep.pos.y - target.pos.y, { visualizePathStyle: { stroke: '#000000', opacity: 0.5 } })
     }
@@ -115,7 +115,7 @@ let _Constructor = {
   getRangedTarget: function () {
     let creep = this.creep
 
-    let closeArchers = creep.pos.findNearest(Game.HOSTILE_CREEPS, {
+    let closeArchers = creep.pos.findNearest(FIND_HOSTILE_CREEPS, {
       filter: function (enemy) {
         return enemy.getActiveBodyparts(Game.RANGED_ATTACK) > 0
           && creep.pos.inRangeTo(enemy, 3)
@@ -126,7 +126,7 @@ let _Constructor = {
       return closeArchers
     }
 
-    let closeMobileMelee = creep.pos.findNearest(Game.HOSTILE_CREEPS, {
+    let closeMobileMelee = creep.pos.findNearest(FIND_HOSTILE_CREEPS, {
       filter: function (enemy) {
         return enemy.getActiveBodyparts(Game.ATTACK) > 0
           && enemy.getActiveBodyparts(Game.MOVE) > 0
@@ -138,7 +138,7 @@ let _Constructor = {
       return closeMobileMelee
     }
 
-    let closeHealer = creep.pos.findNearest(Game.HOSTILE_CREEPS, {
+    let closeHealer = creep.pos.findNearest(FIND_HOSTILE_CREEPS, {
       filter: function (enemy) {
         return enemy.getActiveBodyparts(Game.HEAL) > 0
           && enemy.getActiveBodyparts(Game.MOVE) > 0
@@ -150,7 +150,7 @@ let _Constructor = {
       return closeHealer
     }
 
-    return creep.pos.findNearest(Game.HOSTILE_CREEPS)
+    return creep.pos.findNearest(FIND_HOSTILE_CREEPS)
   }
 }
 
