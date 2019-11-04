@@ -77,6 +77,10 @@ module.exports =
       spawnPoint = Game.spawns.S1
     }
 
+    console.log('energy: ', spawnPoint.room.energyAvailable >= this.spawnCost(role))
+    console.log('spawning.null: ', spawnPoint.spawning === null)
+    console.log('spawning.undef', spawnPoint.spawning === undefined)
+
     return spawnPoint.room.energyAvailable >= this.spawnCost(role)
       && (spawnPoint.spawning === null
         || spawnPoint.spawning === undefined)
@@ -115,9 +119,9 @@ module.exports =
       }
     }
 
-    console.log('Spawning ' + name || role)
+    // console.log('Spawning ' + name || role)
     if (spawnPoint.spawnCreep(creepManager.getRoleBodyParts(role), name, { memory: memory, dryRun: true }) === OK) {
-      console.log('DRY RUN OK')
+      console.log('spawnPoint.spawnCreep()')
       spawnPoint.spawnCreep(creepManager.getRoleBodyParts(role), name, { memory })
     }
   },

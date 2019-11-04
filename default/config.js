@@ -11,6 +11,8 @@ function getCountOfType(type, checkQue) {
     }
   }).length
 
+  console.log('TYPE: ', type, '| count: ', count)
+
   if (checkQue === undefined) {
     checkQue = false
   }
