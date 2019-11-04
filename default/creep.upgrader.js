@@ -26,6 +26,9 @@ let upgrader = {
     creep.memory.onCreated = true
   },
 
+  // puts creep in withdraw mode untill it is full
+  // or there is no energy stored, then mb mine?
+  // (JUST IDLING NOW)
   withDrawEnergy: function () {
     let creep = this.creep
 
@@ -57,11 +60,10 @@ let upgrader = {
         let moveOpts = opts.moveOpts || {}
         creep.moveTo(target, moveOpts)
       }
-    } else if (!targets.length) {
+    } else /* if (!targets.length) */ {
       this.rest()
     }
   },
-
 
   action: function () {
     let creep = this.creep
@@ -71,9 +73,11 @@ let upgrader = {
     if (workOrder === ERR_NOT_IN_RANGE) {
       creep.moveTo(creep.room.controller)
     } else if (workOrder === ERR_NOT_ENOUGH_RESOURCES) {
+      creep.say('🤷‍♀️ no energy')
       this.withDrawEnergy()
     } else {
       console.log(creep.name + ' upgrade error ' + workOrder)
+      this.rest()
     }
   }
 }
