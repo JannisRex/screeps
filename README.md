@@ -1,18 +1,18 @@
 # SCREEPS SCRIPT
 ---
 
-## colony dying @night idk when or how (mb new() breaks or some reference gets missing)
+## colony LIVES
 
 ---
 ### TODO
   
-  * Change Work/Delivery/Spawn routine => Split Work to different Creeps
-  
-  * Get some sort of Pathing
-  
-  * Deal with multiple Spawns
-  
-  * Check efficency, maybe reduce cost somehow (new Slave() to expensive???)
+  * improve the dynamic sizing in .getParts() => If X ammount of extensions do atleast X size of Creep (size = count of parts)
+  * optimize withdrawEnergy (and add it to baseClass maybe)
+  * Create Ranger + Fighter + Healer
+  * look into kite() and rangeAttack() -> feels a bit clunky
+  * Get a RoadRepairer (dont let repairer repair Roads aswell, inefficent AF and takes forever)
+  * improve TowerScript and RoadBuildScript
+  * look into creep.upgrader => If there is no Structure with enough energy, sometiems gets bugged in .rest() (mb add some returns)
 
 ---
 
