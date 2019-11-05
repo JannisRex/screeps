@@ -79,7 +79,7 @@ let hauler = {
     let target = null // target for homePath
 
     if (!target) {
-      let possibleTargets = creep.room.find(FIND_STRUCTURES, {
+      let possibleTargets = creep.room.find(FIND_MY_STRUCTURES, {
         filter: (structure) => {
           return (structure.structureType === STRUCTURE_EXTENSION ||
               structure.structureType === STRUCTURE_SPAWN ||

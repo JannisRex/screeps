@@ -39,7 +39,7 @@ let upgrader = {
     let targets = creep.memory.preferredStructures
 
     if (!targets) {
-      let structures = creep.room.find(FIND_STRUCTURES, {
+      let structures = creep.room.find(FIND_MY_STRUCTURES, {
         filter: (structure) => {
           return (structure.structureType === STRUCTURE_STORAGE ||
                     structure.structureType === STRUCTURE_CONTAINER ||
