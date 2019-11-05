@@ -1,4 +1,4 @@
-let helper = {
+let hauler = {
   parts: function () {
     let availableEnergy = Game.spawns.S1.room.energyAvailable
     let availableParts = require('config').maxCreepParts
@@ -169,4 +169,4 @@ let helper = {
   }
 }
 
-module.exports = helper
+module.exports = hauler

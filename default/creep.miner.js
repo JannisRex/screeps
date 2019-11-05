@@ -75,7 +75,7 @@ let miner = {
 
     // adds needed helper to Que (at front)
     for (let i = 0; i < helpersNeeded; i++) {
-      Memory.spawnQue.unshift({ type: 'miner_helper', memory: {
+      Memory.spawnQue.unshift({ type: 'hauler', memory: {
         miner: creep.id
       } })
     }
