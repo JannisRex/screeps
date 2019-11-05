@@ -1,55 +1,14 @@
-let config = require('index').lib.config
-let task = require('index').slave
-let towerControl = require('index').buildings.tower
-let roadControl = require('index').buildings.road
-
-function cleanupDeadCreeps() {
-  for (let name in Memory.creeps) {
-    if (!Game.creeps[name]) {
-      console.log('Clearing non-existing creep memory: ', name)
-      delete Memory.creeps[name]
-    }
-  }
-}
+let creepHandler = require('index').lib.helper
+let creepSpawner = require('index').lib.spawner
+let assignRoles = require('index').functions.assignRoles
+let cleanupDeadCreeps = require('index').functions.cleanupDeadCreeps
 
 module.exports.loop = function () {
-  let spawn = Game.spawns.S1
+  creepHandler.__constructor()
+  creepHandler.doThisThing()
 
-  // TODO: deal with multiple spawns
-  spawn.memory.slaves = spawn.memory.slaves || {}
+  creepSpawner.spawnQue()
+
+  assignRoles(Game.creeps)
   cleanupDeadCreeps()
-  // roadControl.buildToSources()
-  // towerControl.attackClosest($ID)
-  // towerControl.repairClosest($ID)
-
-  for (let type of config.spawnPriority) {
-    if (spawn.spawning) {
-      break
-    }
-
-    let count = config.targetCounts[type]
-    {
-      let creeps = _.filter(Game.creeps, (creep) => creep.memory.role === type)
-      if (creeps.length < count) {
-        if (task.slave.spawn(spawn, type) === OK) {
-          // doesnt get called idk, if I dont
-          // check it gets called indefinetely
-          console.log('spawning ' + type)
-        }
-        // In all cases we should stop trying to spawn
-        // another thing this tick.
-        break
-      }
-    }
-  }
-
-  for (let name in Game.creeps) {
-    if (Game.creeps[name]) {
-      let creep = Game.creeps[name]
-      if (creep.spawning || creep.memory.role === undefined) {
-        continue
-      }
-      new task[creep.memory.job](creep).tick()
-    }
-  }
 }
