@@ -52,6 +52,9 @@ let builder = {
     }
   },
 
+  // Since Repair > Build we check here first
+  // try to find and filter all damaged Buildings,
+  // below 50% life. Then start to repair up to 75%
   repairStructures: function (creep) {
     // checking damaged ramparts first and then
     // repair them starting from the most damaged
@@ -112,6 +115,31 @@ let builder = {
     }
   },
 
+  // when no repairs are needed
+  // we check for construction sites
+  // amd start building those
+  buildStructures: function (creep) {
+    let unfinishedStructure = creep.pos.findClosestByPath(FIND_MY_CONSTRUCTION_SITES)
+
+    if (unfinishedStructure) {
+      // if the creep is inside the construction Site
+      // either by manual  missplacing or
+      // malfunctioning code :)))
+      if (creep.pos.inRangeTo(unfinishedStructure, 0)) {
+        creep.say('☠STUCK☠')
+        creep.suicide()
+      }
+
+      let workOrder = creep.build(unfinishedStructure)
+
+      if (workOrder === ERR_NOT_IN_RANGE) {
+        creep.moveTo(unfinishedStructure)
+      }
+    } else {
+      return
+    }
+  },
+
   action: function () {
     let creep = this.creep
 
@@ -124,6 +152,8 @@ let builder = {
       // if the worker got energy, we check
       // what needs to be done (repair or build)
       this.repairStructures(creep)
+      this.buildStructures(creep)
+      this.rest()
     }
   }
 }
