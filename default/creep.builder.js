@@ -46,6 +46,7 @@ let builder = {
         creep.moveTo(target, { visualizePathStyle: { stroke: '#FF4500', opacity: 0.5 } })
       } else if (workOrder === ERR_FULL) {
         creep.say('❌full❌')
+        return
       }
     } else {
       this.rest()
