@@ -67,7 +67,7 @@ module.exports = {
   maxCreepParts: 13, // upper border for dynamic sizing
   getCount: getCountOfType,
   initialSpawnOrder: ['miner', 'miner', 'upgrader', 'miner', 'builder'],
-  availableCreeps: ['miner', 'upgrader', 'builder', 'ranger', 'healer', 'fighter'],
+  availableCreeps: ['miner', 'upgrader', 'ranger', 'builder', 'healer', 'fighter'],
   spawnCount: {
     miner: howManyMiner(),
     upgrader: howManyUpgrader(),
