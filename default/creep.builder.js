@@ -28,6 +28,18 @@ let builder = {
 
 
   action: function () {
+    let creep = this.creep
+
+    // since we cant create a workOrder before
+    // finding each structure and filtering, we start
+    // with check for creep.energy to save cpu
+    if (creep.store[RESOURCE_ENERGY] === 0) {
+      let spawnInRange = creep.pos.findClosestByPath(FIND_MY_SPAWNS, {
+        filter: function (spawn) {
+          return spawn.store[RESOURCE_ENERGY] > 0 && creep.pos.inRangeTo(spawn, 5)
+        }
+      })
+    }
   }
 }
 
