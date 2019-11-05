@@ -13,7 +13,9 @@ module.exports.functions = {
 }
 
 module.exports.creeps = {
-  miner: require('creep.miner')
+  miner: require('creep.miner'),
+  upgrader: require('creep.upgrader'),
+  builder: require('creep.builder')
 }
 
 module.exports.buildings = {
