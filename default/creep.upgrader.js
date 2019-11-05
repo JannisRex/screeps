@@ -57,17 +57,17 @@ let upgrader = {
       let spawns = creep.room.find(FIND_MY_SPAWNS)
       if (spawns instanceof Array) {
         targets = spawns
-      } else if (targets.length > 0) {
-        let workOrder = creep.withdraw(targets[0], RESOURCE_ENERGY)
-        let target = targets[0]
-        if (workOrder === ERR_NOT_IN_RANGE) {
-          creep.moveTo(target, { visualizePathStyle: { stroke: '#FF4500', opacity: 0.5 } })
-        } else if (workOrder === ERR_FULL) {
-          creep.say('❌full❌')
-        }
-      } else {
-        this.rest()
       }
+    } if (targets.length > 0) {
+      let target = targets[0]
+      let workOrder = creep.withdraw(target, RESOURCE_ENERGY)
+      if (workOrder === ERR_NOT_IN_RANGE) {
+        creep.moveTo(target, { visualizePathStyle: { stroke: '#FF4500', opacity: 0.5 } })
+      } else if (workOrder === ERR_FULL) {
+        creep.say('❌full❌')
+      }
+    } else {
+      this.rest()
     }
   },
 
