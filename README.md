@@ -12,7 +12,6 @@
   * look into kite() and rangeAttack() -> feels a bit clunky
   * Get a RoadRepairer (dont let repairer repair Roads aswell, inefficent AF and takes forever)
   * improve TowerScript and RoadBuildScript
-  * look into creep.upgrader => If there is no Structure with enough energy, sometiems gets bugged in .rest() (mb add some returns)
 
 ---
 
