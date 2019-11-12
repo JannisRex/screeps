@@ -47,6 +47,7 @@ let _Constructor = {
 
   rest: function () {
     let creep = this.creep
+    console.log(creep.name + ' is RESTING ')
 
     let distance = 3
     let restTarget = creep.pos.findClosestByPath(FIND_MY_SPAWNS)
