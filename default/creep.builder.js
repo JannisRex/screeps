@@ -136,6 +136,8 @@ let builder = {
       if (workOrder === ERR_NOT_IN_RANGE) {
         creep.moveTo(unfinishedStructure)
       }
+    } else if (workOrder === OK) {
+      creep.say('🛠building')
     } else {
       return
     }
@@ -154,7 +156,6 @@ let builder = {
       // what needs to be done (repair or build)
       this.repairStructures(creep)
       this.buildStructures(creep)
-      this.rest()
     }
   }
 }
