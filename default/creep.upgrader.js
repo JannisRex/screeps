@@ -79,9 +79,11 @@ let upgrader = {
     if (workOrder === ERR_NOT_IN_RANGE) {
       creep.moveTo(creep.room.controller, { visualizePathStyle: { stroke: '#ff80ed', opacity: 0.5 } })
     } else if (workOrder === ERR_NOT_ENOUGH_RESOURCES) {
-      creep.say('🤷‍♀️ no energy')
+      creep.say('🤷no energy')
       this.withDrawEnergy()
-    } else {
+    } else if (workOrder === OK) {
+      creep.say('🚀upgrade')
+    } else if (workOrder !== OK) {
       console.log(creep.name + ' upgrade error ' + workOrder)
       this.rest()
     }
