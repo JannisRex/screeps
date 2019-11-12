@@ -6,6 +6,7 @@
 ---
 ### TODO
   
+  * BuildQue
   * improve the dynamic sizing in .getParts() => If X ammount of extensions do atleast X size of Creep (size = count of parts)
   * optimize withdrawEnergy (and add it to baseClass maybe)
   * Create Ranger + Fighter + Healer
